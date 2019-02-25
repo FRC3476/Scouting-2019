@@ -1,0 +1,6 @@
+[submodule "Orange-Rind"]
+	path = Orange-Rind
+	url = https://github.com/FRC3476/Orange-Rind.git
+[submodule "Orange-rIND"]
+	path = Orange-rIND
+	url = https://github.com/FRC3476/Orange-Rind.git
