@@ -29,12 +29,12 @@ function filter($str){
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap-material-design-master/dist/css/ripples.min.css" rel="stylesheet">
-    <link href="bootstrap-material-design-master/dist/css/material-wfont.min.css" rel="stylesheet">	
+    <link href="bootstrap-material-design-master/dist/css/material-wfont.min.css" rel="stylesheet">
 	<script src="jquery-1.11.2.min.js"></script>
 	<script src="sorttable.js"></script>
-	
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 
 </head>
 <body>
@@ -54,35 +54,35 @@ function filter($str){
 					<input type="text" class="form-control" id="teamNumber" name="teamNumber" placeholder=" ">
 				</div>
 			</div>
-			
+
 			<div class="col-lg-2">
 			<b><br>Team Name: </b>
 			</div>
 				<div class="col-lg-10">
 				<input type="text" class="form-control" id="teamName" name="teamName" placeholder=" ">
 			</div>
-			
+
 			<div class="col-lg-2">
 			<b><br>Weight of Robot: </b>
 			</div>
 				<div class="col-lg-10">
 				<input type="text" class="form-control" id="weight" name="weight" placeholder=" ">
 			</div>
-			
+
 			<div class="col-lg-2">
 			<b><br>Height of Robot: </b>
 			</div>
 				<div class="col-lg-10">
 				<input type="text" class="form-control" id="height" name="height" placeholder=" ">
 			</div>
-			
+
 			<div class="col-lg-2">
 			<b><br>How Many Batteries in the Pit: </b>
 			</div>
 				<div class="col-lg-10">
 				<input type="text" class="form-control" id="numBatteries" name="numBatteries" placeholder=" ">
 				</div>
-			
+
 			<div class="col-lg-2">
 			<b><br>How Many Batteries Can Be Charged Simultaneously: </b>
 			</div>
@@ -90,7 +90,7 @@ function filter($str){
 				<input type="text" class="form-control" id="chargedBatteries" name="chargedBatteries" placeholder=" ">
 				<br>
 				</div>
-				
+
 			<div class="col-lg-2">
 			<b><br>Type of Drive Train: </b>
 			</div>
@@ -98,7 +98,7 @@ function filter($str){
 				<input type="text" class="form-control" id="driveTrain" name="driveTrain" placeholder=" ">
 				<br>
 				</div>
-				
+
 			<div class="col-lg-2">
 			<b><br>Auto: </b>
 			</div>
@@ -108,7 +108,17 @@ function filter($str){
 				<input type="text" class="form-control" id="auto" name="auto" placeholder=" ">
 				<br>
 				</div>
-				
+
+				<div class="col-lg-2">
+				<b><br>Live Stream: </b>
+				</div>
+					<div class="col-lg-10">
+					<br>
+					<br>
+					<input type="text" class="form-control" id="auto" name="auto" placeholder=" ">
+					<br>
+					</div>
+
 			<div class="col-lg-2">
 			<b><br>Comments: </b>
 			</div>
@@ -116,14 +126,14 @@ function filter($str){
 				<input type="text" class="form-control" id="pitComments" name="pitComments" placeholder=" ">
 				<br>
 				</div>
-				
+
 			<div class="col-lg-12 col-sm-12 col-xs-12">
 				<input id="PitScouting" type="submit" class="btn btn-primary" value="Submit Data" onclick="" >
 			</form>
 			</div>
 			<br>
-				
-			
+
+
 	</div>
 </div>
 <?php include("footer.php"); ?>
