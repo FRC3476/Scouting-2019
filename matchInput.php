@@ -39,7 +39,7 @@ function postwith(to){
 		var id = document.getElementById('matchNum').value + "-" + document.getElementById('teamNum').value;
 		console.log(JSON.stringify(nums));
 		//console.log(nums);
-		//orangePersist.collection("avr").doc(id).set(nums);
+		orangePersist.collection("avr").doc(id).set(nums);
 		$.post( "dataHandler.php", nums).done(function( data ) {
 		});
 	}
