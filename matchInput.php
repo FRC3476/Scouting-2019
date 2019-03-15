@@ -237,6 +237,17 @@ function postwith(to){
 							</script>
 				</div>
 				<div class="col-md-2">
+					<a><h3><b><u>Rocket L3:</u></b></h3></a>
+						<h4><b>No. of Cargos:</b></h4>
+							<button type="button" onClick="decRocket3Cargo()" class="enlargedtext ">-</button>
+							<a id="rocket3Cargo" class="enlargedtext">0</a>
+							<button type="button" onClick="incrRocket3Cargo()" class="enlargedtext">+</button>
+						<h4><b>No. of Hatches:</b></h4>
+							<button type="button" onClick="decRocket3Hatch()" class="enlargedtext ">-</button>
+							<a id="rocket3Hatch" class="enlargedtext">0</a>
+							<button type="button" onClick="incrRocket3Hatch()" class="enlargedtext">+</button>
+							<br>
+
 				<a><h3><b><u>Rocket L2:</u></b></h3></a>
 					<h4><b>No. of Cargos:</b></h4>
 						<button type="button" onClick="decRocket2Cargo()" class="enlargedtext ">-</button>

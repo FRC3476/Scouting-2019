@@ -275,11 +275,7 @@ include("databaseName.php");
 															 "'.$defenseComments.'",
 															 "'.$matchComments.'")';
 		$queryOutput = runQuery($queryString);
-		if ($queryOutput === TRUE) {
-			return "Success";
-		} else {
-			return "Error: " . $queryOutput . "<br>";
-		}
+
 	}
 	function headScoutInput($matchNum,
 							$team1,

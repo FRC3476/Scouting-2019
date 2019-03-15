@@ -3,7 +3,6 @@
 <html>
 <?php session_start();
 include("header.php")?>
-<body>
 <?php include("navBar.php")?>
 <?php
 	function filter($str){
@@ -24,7 +23,7 @@ include("header.php")?>
 		$strategy4 = filter($_POST['strategy4']);
 		$strategy5 = filter($_POST['strategy5']);
 		$strategy6 = filter($_POST['strategy6']);
-		
+
 		headScoutInput($matchNum,
 						$team1,
 						$team2,
@@ -40,8 +39,8 @@ include("header.php")?>
 						$strategy6);
 	}
 ?>
-
-
+<head></head>
+<body>
 <!--Rest of the code for the inputs-->
 	<div id="input">
 	<h1 style="text-decoration: underline; color: rgb(15,129,120); padding-left: 30px; font-size: 30px">Head Scout Input:</h1>
@@ -143,12 +142,12 @@ include("header.php")?>
 	}
 
 /*style for the textboxes*/
-  
+
 
   	#team1{
   		display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
   	}
-  	
+
 
   	#team2{
   		display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
@@ -250,11 +249,11 @@ include("header.php")?>
 </style>
 <script>
 function postwith(to){
-		
+
 		var myForm = document.createElement("form");
 		myForm.method="post";
 		myForm.action = to;
-		
+
 		var names = [
 		'matchNum',
 		'team1',
@@ -270,7 +269,7 @@ function postwith(to){
 		'strategy5',
 		'strategy6'
 		];
-		
+
 		var nums = [
 		document.getElementById('matchNum').value,
 		document.getElementById('team1').value,
@@ -285,16 +284,16 @@ function postwith(to){
 		document.getElementById('strategy4').value,
 		document.getElementById('strategy5').value,
 		document.getElementById('strategy6').value
-		];  
-		
-		
+		];
+
+
 		for (var i = 0; i != names.length; i++) {
 			var myInput = document.createElement("input");
 			myInput.setAttribute("name", names[i]);
 			myInput.setAttribute("value", nums[i]);
 			myForm.appendChild(myInput);
 		}
-  
+
 		document.body.appendChild(myForm);
 		myForm.submit();
 		document.body.removeChild(myForm);
