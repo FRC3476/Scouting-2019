@@ -1,10 +1,15 @@
 <html>
 <?php include("navBar.php");
+
 function filter($str){
 	return filter_var($str, FILTER_SANITIZE_STRING);
 }
  if( isset( $_POST['teamNumber'] ) ) {
-	include("databaseLibrary.php");
+	if(!isset($_POST['cameraStream'])){
+		$_POST['cameraStream']="off";
+	} 
+	 include("databaseLibrary.php");
+	 $cameraStream = filter($_POST['cameraStream']);
 	 $teamNum = filter($_POST['teamNumber']);
 	 $teamName = filter($_POST['teamName']);
 	 $weight = filter($_POST['weight']);
@@ -14,6 +19,7 @@ function filter($str){
 	 $driveTrain = filter($_POST['driveTrain']);
 	 $pitComments = filter($_POST['pitComments']);
 	 $auto = filter($_POST['auto']);
+
 	 pitScoutInput( $teamNum,
 				 $teamName,
 				 $weight,
@@ -22,7 +28,9 @@ function filter($str){
 				 $chargedBatteries,
 				 $driveTrain,
 				 $pitComments,
-				 $auto);
+				 $auto,
+				 $cameraStream);
+
  }
  ?>
 <head>
@@ -109,15 +117,13 @@ function filter($str){
 				<br>
 				</div>
 
-				<div class="col-lg-2">
-				<b><br>Live Stream: </b>
+				<div>
+				<b><br>Live Stream: <label class="container2"><input type="checkbox" name="cameraStream"><span class="checkmark"></span>
+				</label></b>
 				</div>
-					<div class="col-lg-10">
-					<br>
-					<br>
-					<input type="text" class="form-control" id="auto" name="auto" placeholder=" ">
-					<br>
-					</div>
+				<br/>
+				<br/>
+
 
 			<div class="col-lg-2">
 			<b><br>Comments: </b>
@@ -136,4 +142,79 @@ function filter($str){
 
 	</div>
 </div>
+
+
+
+<style>
+/* The container */
+.container2 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	font-size: 22px;
+	bottom:10px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container2 input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+	margin-left:100%;
+
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left:0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 5px;
+}
+
+.container:hover input ~ .checkmark {
+	background-color: orange;
+}
+
+.container2 input:checked ~ .checkmark {
+	background-color: rgb(15,129,120);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.container2 input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.container2 .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+</style>
+
+
+
 <?php include("footer.php"); ?>

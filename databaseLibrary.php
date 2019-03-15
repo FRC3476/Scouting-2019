@@ -20,7 +20,7 @@ include("databaseName.php");
 		}
 		//new mysqli($servername, $username, $password, $dbname);
 		//error_log($queryString);
-		
+
 		try{
 			$statement = $conn->prepare($queryString);
 		}
@@ -33,12 +33,13 @@ include("databaseName.php");
 			}
 			$statement = $conn->prepare($queryString);
 		}
-		
+
 		if(!$statement->execute()){
 			die("Failed!" );
 		}
-		
+
 		try{
+			//error_log("".$statement->fetchAll());
 			return $statement->fetchAll();
 		}
 		catch(Exception $e){
@@ -76,14 +77,14 @@ include("databaseName.php");
 			throw new Exception("constructDatabase Error: CREATE DATABASE query failed.");
 		}
 	}
-	
+
 	function connectToServer(){
 		global $servername;
 		global $username;
 		global $password;
 		global $dbname;
 		global $charset;
-		
+
 		$dsn = "mysql:host=".$servername.";charset=".$charset;
 		$opt = [
 			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -92,14 +93,14 @@ include("databaseName.php");
 		];
 		return(new PDO($dsn, $username, $password, $opt));
 	}
-	
+
 	function connectToDB(){
 		global $servername;
 		global $username;
 		global $password;
 		global $dbname;
 		global $charset;
-		
+
 		$dsn = "mysql:host=".$servername.";dbname=".$dbname.";charset=".$charset;
 		$opt = [
 			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -107,9 +108,9 @@ include("databaseName.php");
 			PDO::ATTR_EMULATE_PREPARES   => false
 		];
 		return(new PDO($dsn, $username, $password, $opt));
-	
+
 	}
-	
+
 	function createTables(){
 		global $servername;
 		global $username;
@@ -118,7 +119,7 @@ include("databaseName.php");
 		global $pitScoutTable;
 		global $matchScoutTable;
 		global $headScoutTable;
-		
+
 		$conn = connectToDB();
 		$query = "CREATE TABLE ".$dbname.".".$pitScoutTable. " (
 			teamNumber VARCHAR(50) NOT NULL PRIMARY KEY,
@@ -129,13 +130,14 @@ include("databaseName.php");
 			chargedBatteries VARCHAR(20) NOT NULL,
 			driveTrain VARCHAR(20) NOT NULL,
 			pitComments VARCHAR(100) NOT NULL,
-			auto VARCHAR(20) NOT NULL
+			auto VARCHAR(20) NOT NULL,
+			cameraStream INT NULL
 		)";
 		$statement = $conn->prepare($query);
 		if(!$statement->execute()){
 			throw new Exception("constructDatabase Error: CREATE TABLE pitScoutTable query failed.");
 		}
-		
+
 		$query = "CREATE TABLE ".$dbname.".".$matchScoutTable. " (
 			user VARCHAR(20) NOT NULL,
 			ID VARCHAR(8) NOT NULL PRIMARY KEY,
@@ -162,7 +164,7 @@ include("databaseName.php");
 		if(!$statement->execute()){
 			throw new Exception("constructDatabase Error: CREATE TABLE pitScoutTable query failed.");
 		}
-		
+
 		$query = "CREATE TABLE ".$dbname.".".$headScoutTable. " (
 			matchNum INT(11) NOT NULL PRIMARY KEY,
 			team1 INT(11) NOT NULL,
@@ -185,16 +187,13 @@ include("databaseName.php");
 	}
 	//Input- pitScoutInput, Data from pit scout form is assigned to columns in 17template_pitscout.
 	//Output- queryString and "Success" statement, data put in columns.
-	function pitScoutInput($teamNum, $teamName, $weight, $height, $numBatteries,$chargedBatteries, $driveTrain, $pitComments, $auto){
+	function pitScoutInput($teamNum, $teamName, $weight, $height, $numBatteries,$chargedBatteries, $driveTrain, $pitComments, $auto, $cameraStream){
 		global $pitScoutTable;
-		$queryString = "REPLACE INTO `".$pitScoutTable.'`(`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`)
-				VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'")';
-		$queryOutput = runQuery($queryString);	
-		if ($queryOutput === TRUE) {
-			return "Success";
-		} else {
-			return "Error: " . $queryOutput . "<br>";
-		}		
+		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`)";
+		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'")';
+
+		$queryOutput = runQuery($queryString);
+		
 	}
 	//Input- getTeamList, accesses pit scout table and gets team numbers from it.
 	//Output- array, list of teams in teamNumber column of 17template_pitscout table.
@@ -275,12 +274,12 @@ include("databaseName.php");
 															 "'.$defenseBot.'",
 															 "'.$defenseComments.'",
 															 "'.$matchComments.'")';
-		$queryOutput = runQuery($queryString);	
+		$queryOutput = runQuery($queryString);
 		if ($queryOutput === TRUE) {
 			return "Success";
 		} else {
 			return "Error: " . $queryOutput . "<br>";
-		}		
+		}
 	}
 	function headScoutInput($matchNum,
 							$team1,
@@ -312,8 +311,8 @@ include("databaseName.php");
 															`strategy3`,
 															`strategy4`,
 															`strategy5`,
-															`strategy6`) 
-															VALUES 
+															`strategy6`)
+															VALUES
 															("'.$matchNum.'",
 															"'.$team1.'",
 															"'.$team2.'",
@@ -328,136 +327,29 @@ include("databaseName.php");
 															"'.$strategy5.'",
 															"'.$strategy6.'")';
 		error_log($queryString);
-		$queryOutput = runQuery($queryString);	
+		$queryOutput = runQuery($queryString);
 		if ($queryOutput === TRUE) {
 			return "Success";
 		} else {
 			return "Error: " . $queryOutput . "<br>";
-		}		
+		}
 	}
-	
+
 	function getAllMatchData(){
 		global $matchScoutTable;
 		$qs1 = "SELECT * FROM `".$matchScoutTable."`";
 		return runQuery($qs1);
 	}
-	
+
 	function getAllHeadScoutData(){
 		global $headScoutTable;
 		$qs1 = "SELECT * FROM `".$headScoutTable."`";
 		return runQuery($qs1);
 
 	}
-	
-	function getTeamData($teamNumber){
-		global $servername;
-		global $username;
-		global $password;
-		global $dbname;
-		global $pitScoutTable;
-		global $matchScoutTable;
-		global $headScoutTable;
-		
-		$qs1 = "SELECT * FROM `".$pitScoutTable."` WHERE teamNumber = ".$teamNumber."";
-		$qs2 = "SELECT * FROM `".$matchScoutTable."`  WHERE teamNum = ".$teamNumber."";
-		$qs3 = "SELECT * FROM `".$headScoutTable."`";
-		$result = runQuery($qs1);
-		$result2 = runQuery($qs2);
-		$result3 = runQuery($qs3);
-		$teamData = array();
-		$pitExists = False;
-		if($result != FALSE){					
-				// output data of each row
-				foreach ($result as $row_key => $row){
-					array_push( $teamData, $row["teamName"], $row["weight"], $row["height"], $row["numBatteries"], $row["chargedBatteries"], $row["driveTrain"], $row["pitComments"], $auto["auto'], array(), array());
-					$pitExists = True;
-			}
-		}
-		if(!$pitExists){
-			array_push( $teamData, $teamNumber, "NA", "NA", "NA", "NA", "NA", "NA", array(), array());
-		}
-		if($result2 != FALSE){
-			foreach ($result2 as $row_key => $row){
-				array_push(	$teamData[7], array($row["user"], $row["ID"], $row["matchNum"], 
-							$row["teamNum"], $row["allianceColor"], $row["autoPath"], 
-							$row["crossLineA"], $row["cargoShipCargoA"], $row["cargoShipHatchA"], 
-							$row["cargoShipCargoT"], $row["cargoShipHatchT"], $row["rocket2Cargo"], 
-							$row["rocket2Hatch"],  $row["climb"], $row["climbTwo"], 
-							$row["climbThree"], $row["issues"], $row["defenseBot"], 
-							$row["defenseComments"], $row["matchComments"]));
-			}	
-		}
-		if($result3 != FALSE){
-			foreach ($result3 as $row_key => $row){
-				array_push(	$teamData[8], array($row["matchNum"], $row["team1"], $row["team2"], 
-							$row["team3"], $row["team4"], $row["team5"], $row["team6"], 
-							$row["strategy1"], $row["strategy2"], $row["strategy3"], 
-							$row["strategy4"], $row["strategy5"], $row["strategy6"]));
-			}
-		}
-		return($teamData);
-	}
-	
-	function getAvgcargoShipCargoA($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$cubeCount = 0;
-		$matchCount  = 0;
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeCount = $cubeCount + $teamData[7][$i][7];
-			$matchCount++;
-		}
-		return($cubeCount/$matchCount);
-	}
-	function getAvgcargoShipHatchA($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$cubeCount = 0;
-		$matchCount  = 0;
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeCount = $cubeCount + $teamData[7][$i][8];
-			$matchCount++;
-		}
-		return ($cubeCount/$matchCount);
-	}
-	function getAvgcargoShipCargoT($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$cubeCount = 0;
-		$matchCount  = 0;
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeCount = $cubeCount + $teamData[7][$i][9];
-			$matchCount++;
-		}
-		return($cubeCount/$matchCount);
-	}
-	function getAvgcargoShipHatchT($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$cubeCount = 0;
-		$matchCount  = 0;
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeCount = $cubeCount + $teamData[7][$i][10];
-			$matchCount++;
-		}
-		return ($cubeCount/$matchCount);
-	}
-	function getAvgrocket2Cargo($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$cubeCount = 0;
-		$matchCount  = 0;
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeCount = $cubeCount + $teamData[7][$i][11];
-			$matchCount++;
-		}
-		return($cubeCount/$matchCount);
-	}
-	function getAvgrocket2Hatch($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$cubeCount = 0;
-		$matchCount  = 0;
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeCount = $cubeCount + $teamData[7][$i][12];
-			$matchCount++;
-		}
-		return($cubeCount/$matchCount);
-	}
+
+
+
 	function getTotalClimb($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$climbCount = 0;
@@ -490,84 +382,7 @@ include("databaseName.php");
 		}
 		return ($defenseCount);
 	}
-	function getSwitchA($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$matchN = matchNum($teamNumber);
-		$cubeGraphA = array();
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeGraphA[$teamData[7][$i][2]] = $teamData[7][$i][7];
-		}
-		$out = array();
-		for($i = 0; $i != sizeof($matchN); $i++){
-			array_push($out , $cubeGraphA[$matchN[$i]]);
-		}
-		return ($out);
-	}
-	function getScaleA($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$matchN = matchNum($teamNumber);
-		$cubeGraphA = array();
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeGraphA[$teamData[7][$i][2]] = $teamData[7][$i][8];
-		}
-		$out = array();
-		for($i = 0; $i != sizeof($matchN); $i++){
-			array_push($out , $cubeGraphA[$matchN[$i]]);
-		}
-		return ($out);
-	}
-	function getSwitchT($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$matchN = matchNum($teamNumber);
-		$cubeGraphT = array();
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeGraphT[$teamData[7][$i][2]] = $teamData[7][$i][9];
-		}
-		$out = array();
-		for($i = 0; $i != sizeof($matchN); $i++){
-			array_push($out , $cubeGraphT[$matchN[$i]]);
-		}
-		return ($out);
-	}
-	function getScaleT($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$matchN = matchNum($teamNumber);
-		$cubeGraphT = array();
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeGraphT[$teamData[7][$i][2]] = $teamData[7][$i][10];
-		}
-		$out = array();
-		for($i = 0; $i != sizeof($matchN); $i++){
-			array_push($out , $cubeGraphT[$matchN[$i]]);
-		}
-		return ($out);
-	}
-	function getrocket2Cargo($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$matchN = matchNum($teamNumber);
-		$cubeGraphT = array();
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeGraphT[$teamData[7][$i][2]] = $teamData[7][$i][11];
-		}
-		$out = array();
-		for($i = 0; $i != sizeof($matchN); $i++){
-			array_push($out , $cubeGraphT[$matchN[$i]]);
-		}
-		return ($out);
-	}
-	function getrocket2Hatch($teamNumber){
-		$teamData = getTeamData($teamNumber);
-		$matchN = matchNum($teamNumber);
-		$cubeGraphT = array();
-		for($i = 0; $i != sizeof($teamData[7]); $i++){
-			$cubeGraphT[$teamData[7][$i][2]] = $teamData[7][$i][12];
-		}
-		$out = array();
-		for($i = 0; $i != sizeof($matchN); $i++){
-			array_push($out , $cubeGraphT[$matchN[$i]]);
-		}
-		return ($out);
-	}
+
 	function matchNum($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchNum = array();
