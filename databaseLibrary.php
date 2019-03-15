@@ -131,7 +131,7 @@ include("databaseName.php");
 			driveTrain VARCHAR(20) NOT NULL,
 			pitComments VARCHAR(100) NOT NULL,
 			auto VARCHAR(20) NOT NULL,
-			cameraStream INT NULL
+			cameraStream VARCHAR(4) NOT NULL
 		)";
 		$statement = $conn->prepare($query);
 		if(!$statement->execute()){
@@ -193,7 +193,7 @@ include("databaseName.php");
 		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'")';
 
 		$queryOutput = runQuery($queryString);
-		
+
 	}
 	//Input- getTeamList, accesses pit scout table and gets team numbers from it.
 	//Output- array, list of teams in teamNumber column of 17template_pitscout table.
