@@ -6,14 +6,14 @@
             <ul>
               <li class="nav-item active">
                 <a class="nav-link" href="index.php" style="color:Black;"><b><u>Return to Home </u></b><span class="sr-only">(current)</span></a>
-            </li>  
+            </li>
             </ul>
         </div>
         <!--/.Call to action-->
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-              
+
 
             </div>
         </div>
