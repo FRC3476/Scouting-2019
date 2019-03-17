@@ -3,7 +3,275 @@
 include("navBar.php");
 	?>
 <script src="Orange-Rind/js/orangePersist.js"></script>
-<script src="matchInput.js"></script>
+<script>
+var increment = 1;
+var keyPressOk = true;
+var mode = true;
+var removeStuff = 0;
+var cargoShipCargo = 0;
+var cargoShipHatch = 0;
+var rocket1Cargo = 0;
+var rocket1Hatch = 0;
+var rocket2Cargo = 0;
+var rocket2Hatch = 0;
+var rocket3Cargo = 0;
+var rocket3Hatch = 0;
+
+var cargoShipCargoT = 0;
+var cargoShipHatchT = 0;
+var cargoShipCargoT = 0;
+var cargoShipHatchT = 0;
+var rocket1CargoT = 0;
+var rocket1HatchT = 0;
+var rocket2CargoT = 0;
+var rocket2HatchT = 0;
+var rocket3CargoT = 0;
+var rocket3HatchT = 0;
+
+//Auto
+//Cargo Ship
+function incrCargoCargoShip(){
+	cargoShipCargo = cargoShipCargo + increment;
+	document.getElementById("cargoShipCargo").innerHTML=cargoShipCargo;
+}
+
+function decCargoCargoShip(){
+	cargoShipCargo = cargoShipCargo - increment;
+	if (cargoShipCargo < 0){
+		cargoShipCargo = 0;
+	}
+	document.getElementById("cargoShipCargo").innerHTML=cargoShipCargo;
+}
+function incrHatchCargoShip(){
+	cargoShipHatch = cargoShipHatch + increment;
+	document.getElementById("cargoShipHatch").innerHTML=cargoShipHatch;
+}
+function decHatchCargoShip(){
+	cargoShipHatch = cargoShipHatch - increment;
+	if (cargoShipHatch < 0){
+		cargoShipHatch = 0;
+	}
+	document.getElementById("cargoShipHatch").innerHTML=cargoShipHatch;
+}
+
+//Rocket
+function incrRocket1Cargo(){
+	rocket1Cargo = rocket1Cargo + increment;
+	document.getElementById("rocket1Cargo").innerHTML=rocket1Cargo;
+}
+function decRocket1Cargo(){
+	rocket1Cargo = rocket1Cargo - increment;
+	if (rocket1Cargo < 0){
+		rocket1Cargo = 0;
+	}
+	document.getElementById("rocket1Cargo").innerHTML=rocket1Cargo;
+}
+
+function incrRocket1Hatch(){
+	rocket1Hatch = rocket1Hatch + increment;
+	document.getElementById("rocket1Hatch").innerHTML=rocket1Hatch;
+}
+function decRocket1Hatch(){
+	rocket1Hatch = rocket1Hatch - increment;
+	if (rocket1Hatch < 0){
+		rocket1Hatch = 0;
+	}
+	document.getElementById("rocket1Hatch").innerHTML=rocket1Hatch;
+}
+
+//Rocket 2
+function incrRocket2Cargo(){
+	rocket2Cargo = rocket2Cargo + increment;
+	document.getElementById("rocket2Cargo").innerHTML=rocket2Cargo;
+}
+function decRocket2Cargo(){
+	rocket2Cargo = rocket2Cargo - increment;
+	if (rocket2Cargo < 0){
+		rocket2Cargo = 0;
+	}
+	document.getElementById("rocket2Cargo").innerHTML=rocket2Cargo;
+}
+
+function incrRocket2Hatch(){
+	rocket2Hatch = rocket2Hatch + increment;
+	document.getElementById("rocket2Hatch").innerHTML=rocket2Hatch;
+}
+function decRocket2Hatch(){
+	rocket2Hatch = rocket2Hatch - increment;
+	if (rocket2Hatch < 0){
+		rocket2Hatch = 0;
+	}
+	document.getElementById("rocket2Hatch").innerHTML=rocket2Hatch;
+}
+
+//Rocket 3
+function incrRocket3Cargo(){
+	rocket3Cargo = rocket3Cargo + increment;
+	document.getElementById("rocket3Cargo").innerHTML=rocket3Cargo;
+}
+function decRocket3Cargo(){
+	rocket3Cargo = rocket3Cargo - increment;
+	if (rocket3Cargo < 0){
+		rocket3Cargo = 0;
+	}
+	document.getElementById("rocket3Cargo").innerHTML=rocket3Cargo;
+}
+
+function incrRocket3Hatch(){
+	rocket3Hatch = rocket3Hatch + increment;
+	document.getElementById("rocket3Hatch").innerHTML=rocket3Hatch;
+}
+function decRocket3Hatch(){
+	rocket3Hatch = rocket3Hatch - increment;
+	if (rocket3Hatch < 0){
+		rocket3Hatch = 0;
+	}
+	document.getElementById("rocket3Hatch").innerHTML=rocket3Hatch;
+}
+
+//Teleop Scouting
+//Teleop Cargo Ship
+function incrCargoCargoShipT(){
+	cargoShipCargoT = cargoShipCargoT + increment;
+	document.getElementById("cargoShipCargoT").innerHTML=cargoShipCargoT;
+}
+
+function decCargoCargoShipT(){
+	cargoShipCargoT = cargoShipCargoT - increment;
+	if (cargoShipCargoT < 0){
+		cargoShipCargoT = 0;
+	}
+	document.getElementById("cargoShipCargoT").innerHTML=cargoShipCargoT;
+}
+function incrHatchCargoShipT(){
+	cargoShipHatchT = cargoShipHatchT + increment;
+	document.getElementById("cargoShipHatchT").innerHTML=cargoShipHatchT;
+}
+function decHatchCargoShipT(){
+	cargoShipHatchT = cargoShipHatchT - increment;
+	if (cargoShipHatchT < 0){
+		cargoShipHatchT = 0;
+	}
+	document.getElementById("cargoShipHatchT").innerHTML=cargoShipHatchT;
+}
+
+
+// Teleop Rocket L1
+
+function nice(){
+	console.log("Nice");
+	cargoShipHatchT = cargoShipHatchT + increment;
+	document.getElementById("cargoShipHatchT").innerHTML=cargoShipHatchT;
+}
+
+
+function incrRocket1CargoT(){
+	rocket1CargoT = rocket1CargoT + increment;
+	document.getElementById("rocket1CargoT").innerHTML=rocket1CargoT;
+}
+function decRocket1CargoT(){
+	rocket1CargoT = rocket1CargoT - increment;
+	if (rocket1CargoT < 0){
+		rocket1CargoT = 0;
+	}
+	document.getElementById("rocket1CargoT").innerHTML=rocket1CargoT;
+}
+
+function incrRocket1HatchT(){
+	rocket1HatchT = rocket1HatchT + increment;
+	document.getElementById("rocket1HatchT").innerHTML=rocket1HatchT;
+}
+function decRocket1HatchT(){
+	rocket1HatchT = rocket1HatchT - increment;
+	if (rocket1HatchT < 0){
+		rocket1HatchT = 0;
+	}
+	document.getElementById("rocket1HatchT").innerHTML=rocket1HatchT;
+}
+
+//Teleop Rocket L2
+function incrRocket2CargoT(){
+	rocket2CargoT = rocket2CargoT + increment;
+	document.getElementById("rocket2CargoT").innerHTML=rocket2CargoT;
+}
+function decRocket2CargoT(){
+	rocket2CargoT = rocket2CargoT - increment;
+	if (rocket2CargoT < 0){
+		rocket2CargoT = 0;
+	}
+	document.getElementById("rocket2CargoT").innerHTML=rocket2CargoT;
+}
+
+function incrRocket2HatchT(){
+	rocket2HatchT = rocket2HatchT + increment;
+	document.getElementById("rocket2HatchT").innerHTML=rocket2HatchT;
+}
+function decRocket2HatchT(){
+	rocket2HatchT = rocket2HatchT - increment;
+	if (rocket2HatchT < 0){
+		rocket2HatchT = 0;
+	}
+	document.getElementById("rocket2HatchT").innerHTML=rocket2HatchT;
+}
+
+
+//Teleop Rocket L3
+function incrRocket3CargoT(){
+	rocket3CargoT = rocket3CargoT + increment;
+	document.getElementById("rocket3CargoT").innerHTML=rocket3CargoT;
+}
+function decRocket3CargoT(){
+	rocket3CargoT = rocket3CargoT - increment;
+	if (rocket3CargoT < 0){
+		rocket3CargoT = 0;
+	}
+	document.getElementById("rocket3CargoT").innerHTML=rocket3CargoT;
+}
+
+function incrRocket3HatchT(){
+	rocket3HatchT = rocket3HatchT + increment;
+	document.getElementById("rocket3HatchT").innerHTML=rocket3HatchT;
+}
+function decRocket3HatchT(){
+	rocket3HatchT = rocket3HatchT - increment;
+	if (rocket3HatchT < 0){
+		rocket3HatchT = 0;
+	}
+	document.getElementById("rocket3HatchT").innerHTML=rocket3HatchT;
+}
+
+//-----------------------------------------------------------------
+$(function(){
+  		$('#teleopscouting').hide();
+	});
+
+function autotele(){
+		if(mode == true){
+			$('#autoscouting').hide();
+			$('#teleopscouting').show();
+			document.getElementById("Switch").innerHTML = "Auto";
+		}
+		else{
+			$('#autoscouting').show();
+			$('#teleopscouting').hide();
+			document.getElementById("Switch").innerHTML="Teleop";
+		}
+		mode = !mode;
+	}
+	function toggleColor(){
+
+		 var colorTog = document.getElementById("allianceColor");
+		if (colorTog.innerHTML !== "Blue <b>(a)</b>") {
+			colorTog.innerHTML = "Blue <b>(a)</b>";
+			document.getElementById("allianceColor").value="Blue";
+		}
+		else {
+			colorTog.innerHTML = "Red <b>(a)</b>";
+			document.getElementById("allianceColor").value="Red";
+		}
+	}
+	</script>
+
 <body>
 
 <script>
@@ -188,7 +456,7 @@ function postwith(to){
 								}
 
 								function drawPoint(context , x , y){
-									context.fillRect(x,y,5,5);
+									context.fillRect(x,y);
 								}
 
 								function drawPointLines(context , point){
@@ -239,46 +507,46 @@ function postwith(to){
 				<div class="col-md-2">
 					<a><h3><b><u>Rocket L3:</u></b></h3></a>
 						<h4><b>No. of Cargos:</b></h4>
-							<button type="button" onClick="decRocket3Cargo()" class="enlargedtext ">-</button>
+							<button type="button" onClick="decRocket3Cargo()" class="enlargedtext stylish">-</button>
 							<a id="rocket3Cargo" class="enlargedtext">0</a>
-							<button type="button" onClick="incrRocket3Cargo()" class="enlargedtext">+</button>
+							<button type="button" onClick="incrRocket3Cargo()" class="enlargedtext stylish">+</button>
 						<h4><b>No. of Hatches:</b></h4>
-							<button type="button" onClick="decRocket3Hatch()" class="enlargedtext ">-</button>
+							<button type="button" onClick="decRocket3Hatch()" class="enlargedtext stylish">-</button>
 							<a id="rocket3Hatch" class="enlargedtext">0</a>
-							<button type="button" onClick="incrRocket3Hatch()" class="enlargedtext">+</button>
+							<button type="button" onClick="incrRocket3Hatch()" class="enlargedtext stylish">+</button>
 							<br>
 
 				<a><h3><b><u>Rocket L2:</u></b></h3></a>
 					<h4><b>No. of Cargos:</b></h4>
-						<button type="button" onClick="decRocket2Cargo()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decRocket2Cargo()" class="enlargedtext stylish">-</button>
 						<a id="rocket2Cargo" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket2Cargo()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrRocket2Cargo()" class="enlargedtext stylish">+</button>
 					<h4><b>No. of Hatches:</b></h4>
-						<button type="button" onClick="decRocket2Hatch()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decRocket2Hatch()" class="enlargedtext stylish">-</button>
 						<a id="rocket2Hatch" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket2Hatch()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrRocket2Hatch()" class="enlargedtext stylish">+</button>
 						<br>
 				<a><h3><b><u>Rocket L1:</u></b></h3></a>
 					<h4><b>No. of Cargos:</b></h4>
-						<button type="button" onClick="decRocket1Cargo()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decRocket1Cargo()" class="enlargedtext stylish">-</button>
 						<a id="rocket1Cargo" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket1Cargo()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrRocket1Cargo()" class="enlargedtext stylish">+</button>
 					<h4><b>No. of Hatches:</b></h4>
-						<button type="button" onClick="decRocket1Hatch()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decRocket1Hatch()" class="enlargedtext stylish">-</button>
 						<a id="rocket1Hatch" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket1Hatch()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrRocket1Hatch()" class="enlargedtext stylish">+</button>
 						<br>
 					</div>
 				<div class="col-md-6">
 				<a><h3><b><u>Cargo Ship:</u></b></h3></a>
 					<h4><b>No. of Cargos:</b></h4>
-						<button type="button" onClick="decCargoCargoShip()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decCargoCargoShip()" class="enlargedtext stylish">-</button>
 						<a id="cargoShipCargo" class="enlargedtext">0</a>
-						<button type="button" onClick="incrCargoCargoShip()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrCargoCargoShip()" class="enlargedtext stylish">+</button>
 					<h4><b>No. of Hatches:</b></h4>
-						<button type="button" onClick="decHatchCargoShip()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decHatchCargoShip()" class="enlargedtext stylish">-</button>
 						<a id="cargoShipHatch" class="enlargedtext">0</a>
-						<button type="button" onClick="incrHatchCargoShip()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrHatchCargoShip()" class="enlargedtext stylish">+</button>
 						<br>
 						<br>
 						<br>
@@ -286,45 +554,59 @@ function postwith(to){
 				</div>
 			</div>
 		</div>
+
+		<!--Tepeop scouting section-->
 		<div id="teleopscouting">
 			<a><h2><b><u>Teleop Scouting:</u></b></h2></a>
 			<div class="row">
 				<div class="col-md-6">
 					<a><h3><b><u>Score:</u></b></h3></a>
+
+						<!--Cargo Ship-->
 					<h4><b>No. of Cargos on Cargo Ship:</b></h4>
-						<button type="button" onClick="decCargoCargoShipT()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decCargoCargoShipT()" class="enlargedtext stylish">-</button>
 						<a id="cargoShipCargoT" class="enlargedtext">0</a>
-						<button type="button" onClick="incrCargoCargoShipT()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrCargoCargoShipT()" class="enlargedtext stylish">+</button>
 
 					<h4><b>No. of Hatch on Cargo Ship:</b></h4>
-						<button type="button" onClick="decHatchCargoShipT()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decHatchCargoShipT()" class="enlargedtext stylish">-</button>
 						<a id="cargoShipHatchT" class="enlargedtext">0</a>
-						<button type="button" onClick="incrHatchCargoShipT()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrHatchCargoShipT()" class="enlargedtext stylish">+</button>
 
+
+						<!--First level rocket-->
 					<h4><b>No. of Cargos on 1st Level Rocekt:</b></h4>
-						<button type="button" onClick="decRocket1CargoT()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decRocket1CargoT()" class="enlargedtext stylish">-</button>
 						<a id="rocket1CargoT" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket1CargoT()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrRocket1CargoT()" class="enlargedtext stylish">+</button>
 
 					<h4><b>No. of Hatches on 1st Level Rocekt:</b></h4>
-						<button type="button" onClick="decRocket1HatchT()" class="enlargedtext ">-</button>
+						<button type="button" onClick="decRocket1HatchT()" class="enlargedtext stylish">-</button>
 						<a id="rocket1HatchT" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket1HatchT()" class="enlargedtext">+</button>
+						<button type="button" onClick="incrRocket1HatchT()" class="enlargedtext stylish">+</button>
 
+						<!--Second level rocket-->
 					<h4><b>No. of Cargos on 2nd Level Rocket:</b></h4>
-						<button type="button" onClick="decRocket2Cargo()" class="enlargedtext ">-</button>
-						<a id="rocket2Cargo" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket2Cargo()" class="enlargedtext">+</button>
+						<button type="button" onClick="decRocket2CargoT()" class="enlargedtext stylish">-</button>
+						<a id="rocket2CargoT" class="enlargedtext">0</a>
+						<button type="button" onClick="incrRocket2CargoT()" class="enlargedtext stylish">+</button>
 
 					<h4><b>No. of Hatches on 2nd Level Rocket:</b></h4>
-						<button type="button" onClick="decRocket2Hatch()" class="enlargedtext ">-</button>
-						<a id="rocket2Hatch" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket2Hatch()" class="enlargedtext">+</button>
+						<button type="button" onClick="decRocket2HatchT()" class="enlargedtext stylish">-</button>
+						<a id="rocket2HatchT" class="enlargedtext">0</a>
+						<button type="button" onClick="incrRocket2HatchT()" class="enlargedtext stylish">+</button>
+
+
+						<!--Third level rocket-->
+						<h4><b>No. of Cargos on 3nd Level Rocket:</b></h4>
+							<button type="button" onClick="decRocket3CargoT()" class="enlargedtext stylish">-</button>
+							<a id="rocket3CargoT" class="enlargedtext">0</a>
+							<button type="button" onClick="incrRocket3CargoT()" class="enlargedtext stylish">+</button>
 
 					<h4><b>No. of Hatches on 3rd Level Rocket:</b></h4>
-					    <button type="button" onClick="decRocket3Hatch()" class="enlargedtext">-</button>
-						<a id="rocket3Hatch" class="enlargedtext">0</a>
-						<button type="button" onClick="incrRocket3Hatch()" class="enlargedtext">+</button>
+					    <button type="button" onClick="decRocket3HatchT()" class="enlargedtext stylish">-</button>
+						<a id="rocket3HatchT" class="enlargedtext">0</a>
+						<button type="button" onClick="incrRocket3HatchT()" class="enlargedtext stylish">+</button>
 
 					<a><h3><b><u>Robot Issues:</u></b></h3></a>
 						<select id="issues" multiple="" class="form-control">
@@ -390,6 +672,22 @@ function postwith(to){
 </div>
 </div>
 </div>
+
+<style>
+	.stylish{
+		background-color: rgb(15,129,120);
+		color:white;
+		border-radius:5px;
+		font-family:Impact;
+		/*To get rid of weird 3D affect in some browsers*/
+		border:solid rgb(15,129,120);
+	}
+
+	.stylish:hover{
+		background-color:Orange;
+		border-color:Orange;
+	}
+</style>
 </body>
 </html>
 <?php include ("footer.php"); ?>
