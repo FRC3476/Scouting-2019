@@ -18,7 +18,7 @@ include("navBar.php");?>
 		width:50%;
 	}
 	.rotate090 {
-	
+
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -o-transform: rotate(90deg);
@@ -38,22 +38,22 @@ var $ = jQuery.noConflict();
 					include("databaseLibrary.php");
 					//getTeamData($_GET["team"]);
 					$teamData = getTeamData($teamNumber);
-					
-				}	
+
+				}
 		?>
 		<form action="" method="get">
-		Enter Team Number: <input class="control-label"type="number" name="team"  id="team"  size="10" height="10" width="40"> 
+		Enter Team Number: <input class="control-label"type="number" name="team"  id="team"  size="10" height="10" width="40">
 		<button id="submit" class="btn btn-primary" onclick="">Display</button>
 		<div class="row">
 			<div class = "col-md-4">
-				<h1> Team <?php echo($_GET["team"]);?> - <?php echo($teamData[0]); ?></h1>	
-				<div class="box">			
+				<h1> Team <?php echo($_GET["team"]);?>  - <?php echo($teamData[0]); ?></h1>
+				<div class="box">
 					<div id="myCarousel" class="carousel slide" data-interval="false">
 					  <ol class="carousel-indicators">
-					  <?php 
+					  <?php
 						$index = 0;
 						while(file_exists("uploads/".$_GET["team"]."-".$index.".jpg")==1){
-								if($index == 0){	
+								if($index == 0){
 									echo('<li data-target="#myCarousel" data-slide-to="'.$index.'" class="active"></li>');
 								}
 								else{
@@ -64,10 +64,10 @@ var $ = jQuery.noConflict();
 					?>
 					  </ol>
 					  <div class="carousel-inner" role="listbox">
-					  <?php 
+					  <?php
 						$index = 0;
 						while(file_exists("uploads/".$_GET["team"]."-".$index.".jpg")==1){
-								if($index == 0){	
+								if($index == 0){
 									echo('<div class="item active" >
 											<img   id="'.$_GET["team"].'-'.$index.'" src="uploads/'.$_GET["team"].'-'.$index.'.jpg" >
 										 </div>');
@@ -174,7 +174,7 @@ var $ = jQuery.noConflict();
 					<tbody>
 						<tr class="info">
 							<td>Average Switch Cubes in Auto</td>
-							<td><?php echo(getAvgOwnSwitchA($teamNumber)); ?></td> 
+							<td><?php echo(getAvgOwnSwitchA($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
 							<td>Average Scale Cubes in Auto</td>
@@ -182,7 +182,7 @@ var $ = jQuery.noConflict();
 					  </tr>
 					  <tr class="danger">
 							<td>Average Switch Cubes in Teleop</td>
-							<td><?php echo(getAvgOwnSwitchT($teamNumber)); ?></td> 
+							<td><?php echo(getAvgOwnSwitchT($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="info">
 							<td>verage Scale Cubes in Teleop</td>
@@ -190,7 +190,7 @@ var $ = jQuery.noConflict();
 					  </tr>
 					  <tr class="success">
 							<td>Average Opp Switch Cubes in Teleop</td>
-							<td><?php echo(getAvgOppSwitchT($teamNumber)); ?></td> 
+							<td><?php echo(getAvgOppSwitchT($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="danger">
 							<td>Average Exchange Cubes in Teleop</td>
@@ -205,23 +205,23 @@ var $ = jQuery.noConflict();
 					<tbody>
 						<tr class="success">
 							<td>Match Strategy Comments</td>
-							<td><?php $mc = matchComments($teamNumber); 
+							<td><?php $mc = matchComments($teamNumber);
 										for($i = 0; $i!= sizeof($mc); $i++){
 											echo("$mc[$i].").PHP_EOL;
 										}?></td>
 					  </tr>
 					  <tr class="info">
 							<td>Defense Comments</td>
-							<td><?php $dc = defenseComments($teamNumber); 
+							<td><?php $dc = defenseComments($teamNumber);
 										for($i = 0; $i!= sizeof($dc); $i++){
-											echo("$dc[$i].").PHP_EOL;											
+											echo("$dc[$i].").PHP_EOL;
 										}?></td>
 					  </tr>
 					  <tr class="danger">
 							<td>Head Scout Comments</td>
-							<td><?php $hc = headScoutComments($teamNumber); 
+							<td><?php $hc = headScoutComments($teamNumber);
 										for($i = 0; $i!= sizeof($hc); $i++){
-											echo("$hc[$i].").PHP_EOL;											
+											echo("$hc[$i].").PHP_EOL;
 										}?></td>
 					  </tr>
 					</tbody>
@@ -244,7 +244,7 @@ var $ = jQuery.noConflict();
 					  <tr class="danger">
 							<td>No. of Batteries</td>
 							<td><?php echo($teamData[3]); ?></td>
-					  </tr> 
+					  </tr>
 					  <tr class="info">
 							<td>Batteries Charged Simultaneously</td>
 							<td><?php echo($teamData[4]); ?></td>
@@ -284,7 +284,7 @@ var $ = jQuery.noConflict();
 							window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
 						  };
 						  imageObj.src = 'images/autoPath.png';
-						  
+
 						function makeCanvasReady(){
 							context.clearRect(0, 0, 300, 330);
 							context.drawImage(imageObj, 0, 0, 300, 400);
@@ -295,11 +295,11 @@ var $ = jQuery.noConflict();
 							$("#main").attr('width' , $("#canvasHolder").width());
 							$("#main").attr('height' , $("#canvasHolder").height());
 						}
-						
+
 						function drawPoint(context , x , y){
 							context.fillRect(x,y,1,1);
 						}
-							
+
 						function drawPointLines(){
 							makeCanvasReady();
 							var matchNumber = document.getElementById("matchNum").value;
@@ -307,10 +307,10 @@ var $ = jQuery.noConflict();
 							var color = "#FFFFFF";
 								context.beginPath();
 								context.strokeStyle = color;
-							
+
 							for(var i = 0; i !=a.length; i++){
 								if(i == 0){
-									context.moveTo(a[i][0],a[i][1]); 
+									context.moveTo(a[i][0],a[i][1]);
 								}
 								else{
 									context.lineTo(a[i][0], a[i][1]);
@@ -318,8 +318,8 @@ var $ = jQuery.noConflict();
 							}
 							context.stroke();
 						}
-						
-			
+
+
 					</script>
 					<h4><b>Match Number -</b></h4>
 					<select onclick = "drawPointLines()"id="matchNum" class="form-control">
@@ -334,15 +334,15 @@ var $ = jQuery.noConflict();
 					<tbody>
 						<tr class="danger">
 							<td>Total Single Climbs</td>
-							<td><?php echo(getTotalClimb($teamNumber)); ?></td> 
+							<td><?php echo(getTotalClimb($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="info">
 							<td>Total Double Climbs</td>
-							<td><?php echo(getTotalClimbTwo($teamNumber)); ?></td> 
+							<td><?php echo(getTotalClimbTwo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
 							<td>Total Triple Climbs</td>
-							<td><?php echo(getTotalClimbThree($teamNumber)); ?></td> 
+							<td><?php echo(getTotalClimbThree($teamNumber)); ?></td>
 					  </tr>
 					</tbody>
 					</table>
@@ -353,7 +353,7 @@ var $ = jQuery.noConflict();
 					<tbody>
 						<tr class="danger">
 							<td>Total Times Defense Played</td>
-							<td><?php echo(getTotalDefense($teamNumber)); ?></td> 
+							<td><?php echo(getTotalDefense($teamNumber)); ?></td>
 					  </tr>
 					</tbody>
 					</table>

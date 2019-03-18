@@ -1,47 +1,79 @@
 <?php
 include("matchInput.php");
+
+function filter($str){
+  return filter_var($str, FILTER_SANITIZE_STRING);
+}
+
 if( isset( $_POST['matchNum'] ) ) {
 include("databaseLibrary.php");
- $user = filter_var($_POST['userName'], FILTER_SANITIZE_STRING);//($_SESSION['userIDCookie']);
- $matchNum = filter_var($_POST['matchNum'], FILTER_SANITIZE_STRING);  
- $teamNum = filter_var($_POST['teamNum'], FILTER_SANITIZE_STRING);  
- $ID = $matchNum."-".$teamNum;
- $allianceColor = filter_var($_POST['allianceColor'], FILTER_SANITIZE_STRING); 
- $autoPath = filter_var($_POST['autoPath'], FILTER_SANITIZE_STRING);  
- $crossLineA = filter_var($_POST['crossLineA'], FILTER_SANITIZE_STRING);  
- $cargoShipCargoA = filter_var($_POST['cargoShipCargoA'], FILTER_SANITIZE_STRING); 
- $cargoShipHatchA = filter_var($_POST['cargoShipHatchA'], FILTER_SANITIZE_STRING); 
- $cargoShipCargoT = filter_var($_POST['cargoShipCargoT'], FILTER_SANITIZE_STRING); 
- $cargoShipHatchT = filter_var($_POST['cargoShipHatchT'], FILTER_SANITIZE_STRING); 
- $rocket2Cargo = filter_var($_POST['rocket2Cargo'], FILTER_SANITIZE_STRING); 
- $rocket2Hatch = filter_var($_POST['rocket2Hatch'], FILTER_SANITIZE_STRING); 
- $climb = filter_var($_POST['climb'], FILTER_SANITIZE_STRING); 
- $climbTwo = filter_var($_POST['climbTwo'], FILTER_SANITIZE_STRING); 
- $climbThree = filter_var($_POST['climbThree'], FILTER_SANITIZE_STRING); 
- $issues = filter_var($_POST['issues'], FILTER_SANITIZE_STRING);  
- $defenseBot = filter_var($_POST['defenseBot'], FILTER_SANITIZE_STRING);  
- $defenseComments = filter_var($_POST['defenseComments'], FILTER_SANITIZE_STRING);  
- $matchComments = filter_var($_POST['matchComments'], FILTER_SANITIZE_STRING);  
+$user = filter($_POST['user']);
+
+$matchNum = filter($_POST['matchNum']);
+$teamNum = filter($_POST['teamNum']);
+$allianceColor = filter($_POST['allianceColor']);
+$autoPath = filter($_POST['autoPath']);
+$crossLineA = filter($_POST['crossLineA']);
+
+$ID = $matchNum."-".$teamNum;
+$cargoShipCargo = filter($_POST['cargoShipCargo']);
+$cargoShipHatch = filter($_POST['cargoShipHatch']);
+
+$rocket1Cargo = filter($_POST['rocket1Cargo']);
+$rocket1Hatch = filter($_POST['rocket1Hatch']);
+$rocket2Cargo = filter($_POST['rocket2Cargo']);
+$rocket2Hatch = filter($_POST['rocket2Hatch']);
+$rocket3Cargo = filter($_POST['rocket3Cargo']);
+$rocket3Hatch = filter($_POST['rocket3Hatch']);
+
+$cargoShipCargoT = filter($_POST['cargoShipCargoT']);
+$cargoShipHatchT = filter($_POST['cargoShipHatchT']);
+
+$rocket1CargoT = filter($_POST['rocket1CargoT']);
+$rocket1HatchT = filter($_POST['rocket1HatchT']);
+$rocket2CargoT = filter($_POST['rocket2CargoT']);
+$rocket2HatchT = filter($_POST['rocket2HatchT']);
+$rocket3CargoT = filter($_POST['rocket3CargoT']);
+$rocket3HatchT = filter($_POST['rocket3HatchT']);
+
+$climb = filter($_POST['climb']);
+$climbTwo = filter($_POST['climbTwo']);
+$climbThree = filter($_POST['climbThree']);
+$issues = filter($_POST['issues']);
+$defenseBot = filter($_POST['defenseBot']);
+$defenseComments = filter($_POST['defenseComments']);
+$matchComments = filter($_POST['matchComments']);
+
  matchInput( $user,
-			 $ID,
-			 $matchNum,
-			 $teamNum,
-			 $allianceColor,
-			 $autoPath,
-			 $crossLineA,
-			 $cargoShipCargo,
-			 $cargoShipHatch,
-			 $rocket1Cargo,
-			 $rocket1Hatch,
-			 $rocket2Cargo,
-			 $rocket2Hatch,
-			 $climb,
-			 $climbTwo,
-			 $climbThree,
-			 $issues,
-			 $defenseBot,
-			 $defenseComments,
-			 $matchComments);
+            $ID,
+            $matchNum,
+            $teamNum,
+            $allianceColor,
+            $autoPath,
+            $crossLineA,
+            $cargoShipCargo,
+            $cargoShipHatch,
+            $cargoShipCargoT,
+            $cargoShipHatchT,
+            $rocket1Cargo,
+            $rocket1Hatch,
+            $rocket2Cargo,
+            $rocket2Hatch,
+            $rocket3Cargo,
+            $rocket3Hatch,
+            $rocket1CargoT,
+            $rocket1HatchT,
+            $rocket2CargoT,
+            $rocket2HatchT,
+            $rocket3CargoT,
+            $rocket3HatchT,
+            $climb,
+            $climbTwo,
+            $climbThree,
+            $issues,
+            $defenseBot,
+            $defenseComments,
+            $matchComments);
 }
 
 ?>

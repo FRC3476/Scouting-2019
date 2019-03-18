@@ -1,6 +1,6 @@
 /*
-	
-	
+
+
 */
 
 function OrangeDocument(key){
@@ -66,7 +66,7 @@ OrangePersist.prototype = {
     constructor: OrangePersist,
 	initializeApp : function(config){
 		/*
-			Always initializeApp on start. 
+			Always initializeApp on start.
 			This can be used in future updates to integrate Firebase or other features in our persistance.
 		*/
 		if(!localStorage.getItem(this.collectionsKey)){
@@ -76,12 +76,12 @@ OrangePersist.prototype = {
 			this.collections = JSON.parse(localStorage.getItem(this.collectionsKey));
 		}
 	},
-    canStore: function(){ 
+    canStore: function(){
 		/*
 			Returns true if the browser can store data
 		*/
 		if(typeof(Storage) !== "undefined"){
-			return true;	
+			return true;
 		}
 		else{
 			return false;
@@ -104,7 +104,3 @@ OrangePersist.prototype = {
 }
 
 var orangePersist = new OrangePersist();
-
-
-
-

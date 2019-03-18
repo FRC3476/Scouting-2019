@@ -146,12 +146,27 @@ include("databaseName.php");
 			allianceColor TEXT NOT NULL,
 			autoPath LONGTEXT NOT NULL,
 			crossLineA INT(11) NOT NULL,
-			cargoShipCargoA INT(11) NOT NULL,
-			cargoShipHatchA INT(11) NOT NULL,
-			cargoShipCargoT INT(11) NOT NULL,
-			cargoShipHatchT INT(11) NOT NULL,
+
+			cargoShipCargo INT(11) NOT NULL,
+			cargoShipHatch INT(11) NOT NULL,
+
+			rocket1Cargo INT(11) NOT NULL,
+			rocket1Hatch INT(11) NOT NULL,
 			rocket2Cargo INT(11) NOT NULL,
 			rocket2Hatch INT(11) NOT NULL,
+			rocket3Cargo INT(11) NOT NULL,
+			rocket3Hatch INT(11) NOT NULL,
+
+			cargoShipCargoT INT(11) NOT NULL,
+			cargoShipHatchT INT(11) NOT NULL,
+
+			rocket1CargoT INT(11) NOT NULL,
+			rocket1HatchT INT(11) NOT NULL,
+			rocket2CargoT INT(11) NOT NULL,
+			rocket2HatchT INT(11) NOT NULL,
+			rocket3CargoT INT(11) NOT NULL,
+			rocket3HatchT INT(11) NOT NULL,
+
 			climb TINYINT(4) NOT NULL,
 			climbTwo TINYINT(4) NOT NULL,
 			climbThree TINYINT(4) NOT NULL,
@@ -195,6 +210,18 @@ include("databaseName.php");
 		$queryOutput = runQuery($queryString);
 
 	}
+
+
+	/*function pitScoutInput($matchNum,$teamNum,){
+		global $pitScoutTable;
+		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`)";
+		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'")';
+
+		$queryOutput = runQuery($queryString);
+
+	}*/
+
+
 	//Input- getTeamList, accesses pit scout table and gets team numbers from it.
 	//Output- array, list of teams in teamNumber column of 17template_pitscout table.
 	function getTeamList(){
@@ -210,25 +237,35 @@ include("databaseName.php");
 	//Input- pitScoutInput, Data from pit scout form is assigned to columns in 17template_matchinput.
 	//Output- queryString and "Success" statement, data put in columns.
 	function matchInput( $user,
-						 $ID,
-						 $matchNum,
-						 $teamNum,
-						 $allianceColor,
-						 $autoPath,
-						 $crossLineA,
-						 $cargoShipCargoA,
-						 $cargoShipHatchA,
-						 $cargoShipCargoT,
-						 $cargoShipHatchT,
-						 $rocket2Cargo,
-						 $rocket2Hatch,
-						 $climb,
-						 $climbTwo,
-						 $climbThree,
-						 $issues,
-						 $defenseBot,
-						 $defenseComments,
-						 $matchComments){
+             $ID,
+             $matchNum,
+             $teamNum,
+             $allianceColor,
+             $autoPath,
+             $crossLineA,
+             $cargoShipCargo,
+             $cargoShipHatch,
+             $cargoShipCargoT,
+             $cargoShipHatchT,
+             $rocket1Cargo,
+             $rocket1Hatch,
+             $rocket2Cargo,
+             $rocket2Hatch,
+             $rocket3Cargo,
+             $rocket3Hatch,
+             $rocket1CargoT,
+             $rocket1HatchT,
+             $rocket2CargoT,
+             $rocket2HatchT,
+             $rocket3CargoT,
+             $rocket3HatchT,
+             $climb,
+             $climbTwo,
+             $climbThree,
+             $issues,
+             $defenseBot,
+             $defenseComments,
+             $matchComments){
 		global $servername;
 		global $username;
 		global $password;
@@ -241,12 +278,22 @@ include("databaseName.php");
 															 `allianceColor`,
 															 `autoPath`,
 															 `crossLineA`,
-															 `cargoShipCargoA`,
-															 `cargoShipHatchA`,
+															 `cargoShipCargo`,
+															 `cargoShipHatch`,
 															 `cargoShipCargoT`,
 															 `cargoShipHatchT`,
+															 `rocket1Cargo`,
+															 `rocket1Hatch`,
 															 `rocket2Cargo`,
 															 `rocket2Hatch`,
+															 `rocket3Cargo`,
+															 `rocket3Hatch`,
+															 `rocket1CargoT`,
+															 `rocket1HatchT`,
+															 `rocket2CargoT`,
+															 `rocket2HatchT`,
+															 `rocket3CargoT`,
+															 `rocket3HatchT`,
 															 `climb`,
 															 `climbTwo`,
 															 `climbThree`,
@@ -261,12 +308,22 @@ include("databaseName.php");
 															 "'.$allianceColor.'",
 															 "'.$autoPath.'",
 															 "'.$crossLineA.'",
-															 "'.$cargoShipCargoA.'",
-															 "'.$cargoShipHatchA.'",
+															 "'.$cargoShipCargo.'",
+															 "'.$cargoShipHatch.'",
 															 "'.$cargoShipCargoT.'",
 															 "'.$cargoShipHatchT.'",
+															 "'.$rocket1Cargo.'",
+															 "'.$rocket1Hatch.'",
 															 "'.$rocket2Cargo.'",
 															 "'.$rocket2Hatch.'",
+															 "'.$rocket3Cargo.'",
+															 "'.$rocket3Hatch.'",
+															 "'.$rocket1CargoT.'",
+															 "'.$rocket1HatchT.'",
+															 "'.$rocket2CargoT.'",
+															 "'.$rocket2HatchT.'",
+															 "'.$rocket3CargoT.'",
+															 "'.$rocket3HatchT.'",
 															 "'.$climb.'",
 															 "'.$climbTwo.'",
 															 "'.$climbThree.'",
@@ -324,11 +381,6 @@ include("databaseName.php");
 															"'.$strategy6.'")';
 		error_log($queryString);
 		$queryOutput = runQuery($queryString);
-		if ($queryOutput === TRUE) {
-			return "Success";
-		} else {
-			return "Error: " . $queryOutput . "<br>";
-		}
 	}
 
 	function getAllMatchData(){
