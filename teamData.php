@@ -106,29 +106,38 @@ var $ = jQuery.noConflict();
 					<table class="table">
 					<tbody>
 						<tr class="info">
-							<td>Average Rocket Level 2 Cargo </td>
-							<td><?php echo(getRocket2Cargo($teamNumber)); ?></td>
+							<td>Average Cargo On Cargo Ship in Teleop</td>
+							<td><?php echo(getAvgCargoShipCargo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
-							<td>Average Scale Cubes in Auto</td>
-							<td><?php echo(getAvgOwnScaleA($teamNumber)); ?></td>
+							<td>Average Hatches On Cargo Ship in Teleop</td>
+							<td><?php echo(getAvgCargoShipHatches($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="danger">
-							<td>Average Switch Cubes in Teleop</td>
-							<td><?php echo(getAvgOwnSwitchT($teamNumber)); ?></td>
+							<td>Average Cargo on Rocket Level 1 in Teleop</td>
+							<td><?php echo(getAvgRocketL1Cargo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="info">
-							<td>verage Scale Cubes in Teleop</td>
-							<td><?php echo(getAvgOwnScaleT($teamNumber)); ?></td>
+							<td>Average Hatches on Rocket Level 1 in Teleop</td>
+							<td><?php echo(getAvgRocketL1Hatches($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
-							<td>Average Opp Switch Cubes in Teleop</td>
-							<td><?php echo(getAvgOppSwitchT($teamNumber)); ?></td>
+							<td>Average Cargo on Rocket Level 2 in Teleop</td>
+							<td><?php echo(getAvgRocketL2Cargo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="danger">
-							<td>Average Exchange Cubes in Teleop</td>
-							<td><?php echo(getAvgExchangeT($teamNumber)); ?></td>
+							<td>Average Hatches on Rocket Level 2 in Teleop</td>
+							<td><?php echo(getAvgRocketL2Hatches($teamNumber)); ?></td>
 					  </tr>
+						<tr class="success">
+							<td>Average Cargo on Rocket Level 3 in Teleop</td>
+							<td><?php echo(getAvgRocketL3Cargo($teamNumber)); ?></td>
+						</tr>
+						<tr class="danger">
+							<td>Average Hatches on Rocket Level 3 in Teleop</td>
+							<td><?php echo(getAvgRocketL3Hatches($teamNumber)); ?></td>
+						</tr>
+
 					</tbody>
 					</table>
 				</div>
