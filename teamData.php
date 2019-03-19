@@ -99,74 +99,7 @@ var $ = jQuery.noConflict();
 				<button class=" btn btn-material-blue">Teleop Cubes - Opp Switch</button>
 				<button class=" btn btn-material-purple">Teleop Cubes - Exchange</button>
 				<canvas id="dataChart" width="300" height="250"></canvas>
-				<script>
-				var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-				var lineChartData = {
-				labels : <?php echo(json_encode(matchNum($teamNumber)));?>,
-				datasets : [
-					{
-						label: "Auto Switch Cubes",
-						fillColor : "rgba(220,220,220,0.1)",
-						strokeColor : "#ff0000",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#ff0000",
-						pointHighlightFill : "#fff",
-						pointHighlightStroke : "rgba(220,220,220,1)",
-						data : <?php echo(json_encode(getSwitchA($teamNumber))); ?>
-					},
-					{
-						label: "Auto Scale Cubes",
-						fillColor : "rgba(220,220,220,0.1)",
-						strokeColor : "#ffa500",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#ffa500",
-						pointHighlightFill : "#fff",
-						pointHighlightStroke : "rgba(220,220,220,1)",
-						data : <?php echo(json_encode(getScaleA($teamNumber))); ?>
-					},
-					{
-						label: "Teleop Switch Cubes",
-						fillColor : "rgba(220,220,220,0.1)",
-						strokeColor : "#ffff00",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#ffff00",
-						pointHighlightFill : "#fff",
-						pointHighlightStroke : "rgba(220,220,220,1)",
-						data : <?php echo(json_encode(getSwitchT($teamNumber))); ?>
-					},
-					{
-						label: "Teleop Scale Cubes",
-						fillColor : "rgba(220,220,220,0.1)",
-						strokeColor : "#00b300",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#00b300",
-						pointHighlightFill : "#fff",
-						pointHighlightStroke : "rgba(220,220,220,1)",
-						data : <?php echo(json_encode(getScaleT($teamNumber))); ?>
-					},
-					{
-						label: "Opp Switch Cubes",
-						fillColor : "rgba(220,220,220,0.1)",
-						strokeColor : "#3385ff",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#3385ff",
-						pointHighlightFill : "#fff",
-						pointHighlightStroke : "rgba(220,220,220,1)",
-						data : <?php echo(json_encode(getOppSwitchT($teamNumber))); ?>
-					},
-					{
-						label: "Exchange Cubes",
-						fillColor : "rgba(220,220,220,0.1)",
-						strokeColor : "#990099",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#990099",
-						pointHighlightFill : "#fff",
-						pointHighlightStroke : "rgba(151,187,205,1)",
-						data : <?php echo(json_encode(getExchangeT($teamNumber))); ?>
-					}
-				]
-			}
-				</script>
+
 			</div>
 			<div class = "col-md-4">
 				<div class="table-responsive">

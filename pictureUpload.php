@@ -1,6 +1,6 @@
 <html>
 <?php include("navBar.php");?>
-<?php include("upload.php");?>
+<?php require("upload.php");?>
 <body>
 <style>
 #overallForm {

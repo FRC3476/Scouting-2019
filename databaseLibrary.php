@@ -383,6 +383,40 @@ include("databaseName.php");
 		$queryOutput = runQuery($queryString);
 	}
 
+	function getTeamData($teamNumber){
+		global $servername;
+		global $username;
+		global $password;
+		global $dbname;
+		global $pitScoutTable;
+		global $matchScoutTable;
+		global $headScoutTable;
+
+
+		$qs1 = "SELECT * FROM `".$pitScoutTable."` WHERE teamNumber = ".$teamNumber."";
+		$qs2 = "SELECT * FROM `".$matchScoutTable."`  WHERE teamNum = ".$teamNumber."";
+		$qs3 = "SELECT * FROM `".$headScoutTable."`";
+		$result = runQuery($qs1);
+		$result2 = runQuery($qs2);
+		$result3 = runQuery($qs3);
+		$teamData = array();
+		$pitExists = False;
+		if($result != FALSE){
+			// output data of each row
+			foreach ($result as $row_key => $row){
+			array_push( $teamData, $row["teamName"], $row["weight"], $row["height"], $row["numBatteries"], $row["chargedBatteries"], $row["driveTrain"], $row["pitComments"], $auto["auto"], array(), array());
+				$pitExists = True;
+			}
+		}
+
+		if(!$pitExists){
+			array_push( $teamData, $teamNumber, 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', array(), array());
+		}
+			
+	return($teamData);
+}
+
+
 	function getAllMatchData(){
 		global $matchScoutTable;
 		$qs1 = "SELECT * FROM `".$matchScoutTable."`";
