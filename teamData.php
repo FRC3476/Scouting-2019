@@ -106,8 +106,8 @@ var $ = jQuery.noConflict();
 					<table class="table">
 					<tbody>
 						<tr class="info">
-							<td>Average Switch Cubes in Auto</td>
-							<td><?php echo(getAvgOwnSwitchA($teamNumber)); ?></td>
+							<td>Average Rocket Level 2 Cargo </td>
+							<td><?php echo(getRocket2Cargo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
 							<td>Average Scale Cubes in Auto</td>

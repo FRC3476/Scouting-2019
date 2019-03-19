@@ -417,6 +417,24 @@ include("databaseName.php");
 }
 
 
+
+function getRocket2Cargo($teamNumber){
+	$teamData = getTeamData($teamNumber);
+	$matchN = matchNum($teamNumber);
+	$rocketGraphT = array();
+		for($i = 0; $i != sizeof($teamData[7]); $i++){
+			$rocketGraphT[$teamData[7][$i][2]] = $teamData[7][$i][3];
+	
+		}
+		$out = array();
+		
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $rocketGraphT[$matchN[$i]]);
+		}
+	return ($out);
+}
+
+
 	function getAllMatchData(){
 		global $matchScoutTable;
 		$qs1 = "SELECT * FROM `".$matchScoutTable."`";
