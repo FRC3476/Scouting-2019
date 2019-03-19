@@ -138,6 +138,42 @@ var $ = jQuery.noConflict();
 							<td><?php echo(getAvgRocketL3Hatches($teamNumber)); ?></td>
 						</tr>
 
+
+
+
+						<tr class="info">
+							<td>Average Cargo On Cargo Ship in Auto</td>
+							<td><?php echo(getAvgCargoShipCargoA($teamNumber)); ?></td>
+						</tr>
+						<tr class="success">
+							<td>Average Hatches On Cargo Ship in Auto</td>
+							<td><?php echo(getAvgCargoShipHatchesA($teamNumber)); ?></td>
+						</tr>
+						<tr class="danger">
+							<td>Average Cargo on Rocket Level 1 in Auto</td>
+							<td><?php echo(getAvgRocketL1CargoA($teamNumber)); ?></td>
+						</tr>
+						<tr class="info">
+							<td>Average Hatches on Rocket Level 1 in Auto</td>
+							<td><?php echo(getAvgRocketL1HatchesA($teamNumber)); ?></td>
+						</tr>
+						<tr class="success">
+							<td>Average Cargo on Rocket Level 2 in Auto</td>
+							<td><?php echo(getAvgRocketL2CargoA($teamNumber)); ?></td>
+						</tr>
+						<tr class="danger">
+							<td>Average Hatches on Rocket Level 2 in Auto</td>
+							<td><?php echo(getAvgRocketL2HatchesA($teamNumber)); ?></td>
+						</tr>
+						<tr class="success">
+							<td>Average Cargo on Rocket Level 3 in Auto</td>
+							<td><?php echo(getAvgRocketL3CargoA($teamNumber)); ?></td>
+						</tr>
+						<tr class="danger">
+							<td>Average Hatches on Rocket Level 3 in Auto</td>
+							<td><?php echo(getAvgRocketL3HatchesA($teamNumber)); ?></td>
+						</tr>
+
 					</tbody>
 					</table>
 				</div>
