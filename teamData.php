@@ -91,13 +91,23 @@ var $ = jQuery.noConflict();
 					  </a>
 					</div>
 				</div>
-				<a><h3><b><u>Cube Statistics:</u></b></h3></a>
-				<button class=" btn btn-material-red">Auto Cubes - Switch</button>
-				<button class=" btn btn-material-orange">Auto Cubes - Scale</button>
-				<button class=" btn btn-material-yellow">Teleop Cubes - Switch</button>
-				<button class=" btn btn-material-green">Teleop Cubes - Scale</button>
-				<button class=" btn btn-material-blue">Teleop Cubes - Opp Switch</button>
-				<button class=" btn btn-material-purple">Teleop Cubes - Exchange</button>
+				<button class=" btn btn-material-red">Auto Cargo Ship Cargo</button>
+				<button class=" btn btn-material-cyan">Auto Cargo Ship Hatches</button>
+				<button class=" btn btn-material-orange">Teleop Cargo Ship Cargo</button>
+				<button class=" btn btn-material-purple">Teleop Cargo Ship Hatches</button>
+				
+				<button class=" btn btn-material-blue">Auto Rocket L1
+																							<br/>Auto Rocket L2
+																							<br/>Auto Rocket L3
+																							</button>
+				
+
+				<button class=" btn btn-material-green">Teleop Rocket L1
+																							<br/>Teleop Rocket L2
+																							<br/>Teleop Rocket L3
+																							</button>
+				
+				
 				<canvas id="dataChart" width="300" height="250"></canvas>
 
 				<script>
@@ -108,7 +118,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Auto Cargo Ship Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "orange",
+										strokeColor : "red",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ff0000",
 										pointHighlightFill : "#fff",
@@ -118,7 +128,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Auto Cargo Ship Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "red",
+										strokeColor : "cyan",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ffa500",
 										pointHighlightFill : "#fff",
@@ -128,7 +138,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Auto Rocket L1 Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "green",
+										strokeColor : "blue",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ffff00",
 										pointHighlightFill : "#fff",
@@ -148,7 +158,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Auto Rocket L2 Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "purple",
+										strokeColor : "blue",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#3385ff",
 										pointHighlightFill : "#fff",
@@ -158,7 +168,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Auto Rocket L2 Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "cyan",
+										strokeColor : "blue",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#990099",
 										pointHighlightFill : "#fff",
@@ -168,7 +178,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Auto Rocket L3 Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "magenta",
+										strokeColor : "blue",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#3385ff",
 										pointHighlightFill : "#fff",
@@ -178,7 +188,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Auto Rocket L3 Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "green",
+										strokeColor : "blue",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#3385ff",
 										pointHighlightFill : "#fff",
@@ -190,7 +200,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Cargo Ship Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "yellow",
+										strokeColor : "orange",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ff0000",
 										pointHighlightFill : "#fff",
@@ -200,7 +210,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Cargo Ship Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "orange",
+										strokeColor : "purple",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ffa500",
 										pointHighlightFill : "#fff",
@@ -210,7 +220,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Rocket L1 Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "#ffff00",
+										strokeColor : "green",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ffff00",
 										pointHighlightFill : "#fff",
@@ -220,7 +230,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Rocket L1 Hatch",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "#cyan0",
+										strokeColor : "green",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#00b300",
 										pointHighlightFill : "#fff",
@@ -230,7 +240,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Rocket L2 Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "red",
+										strokeColor : "green",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#3385ff",
 										pointHighlightFill : "#fff",
@@ -240,7 +250,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Rocket L2 Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "#990099",
+										strokeColor : "green",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#990099",
 										pointHighlightFill : "#fff",
@@ -250,7 +260,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Rocket L3 Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "#3385ff",
+										strokeColor : "green",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#3385ff",
 										pointHighlightFill : "#fff",
@@ -260,7 +270,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Rocket L3 Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "blue",
+										strokeColor : "green",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#3385ff",
 										pointHighlightFill : "#fff",
@@ -276,6 +286,7 @@ var $ = jQuery.noConflict();
 
 			</div>
 			<div class = "col-md-4">
+			<a><h3><b><u>Cargo and Hatch Statistics:</u></b></h3></a>
 				<div class="table-responsive">
 					<table class="table">
 					<tbody>
@@ -378,6 +389,7 @@ var $ = jQuery.noConflict();
 					  </tr>
 					</tbody>
 					</table>
+					
 				</div>
 			</div>
 			<div class = "col-md-4">
