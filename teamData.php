@@ -234,6 +234,10 @@ var $ = jQuery.noConflict();
 					  <tr class="danger">
 							<td>Pit Comments</td>
 							<td><?php echo($teamData[6]); ?></td>
+							<tr class="success">
+							 <td>Camera Stream</td>
+							 <td><?php echo($teamData[10]); ?></td>
+						 </tr>
 					  </tr>
 					</tbody>
 					</table>
@@ -252,8 +256,8 @@ var $ = jQuery.noConflict();
 						var imageObj = new Image();
 						var matchToPoints = [];
 						<?php
-							for($i = 0; $i != sizeof($teamData[7]); $i++){
-								echo("matchToPoints[".$teamData[7][$i][2]."] = ".$teamData[7][$i][5].";");
+							for($i = 0; $i != sizeof($teamData[8]); $i++){
+								echo("matchToPoints[".$teamData[8][$i][2]."] = ".$teamData[8][$i][5].";");
 							}
 						?>
 						  imageObj.onload = function() {
@@ -301,8 +305,8 @@ var $ = jQuery.noConflict();
 					</script>
 					<h4><b>Match Number -</b></h4>
 					<select onclick = "drawPointLines()"id="matchNum" class="form-control">
-					<?php for($i = 0;$i != sizeof($teamData[7]); $i++){
-							echo("<option value='".$teamData[7][$i][2]."'>".$teamData[7][$i][2]."</option>");
+					<?php for($i = 0;$i != sizeof($teamData[8]); $i++){
+							echo("<option value='".$teamData[8][$i][2]."'>".$teamData[8][$i][2]."</option>");
 						  }?>
 					</select>
 				</div>
