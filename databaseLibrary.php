@@ -449,7 +449,7 @@ function getAvgCargoShipCargoA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][7];
-		$matchCount=$i;
+		$matchCount++;
 	}
 	return($cargoCount/$matchCount);
 }
@@ -460,7 +460,7 @@ function getAvgCargoShipHatchesA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$hatchCount = $hatchCount + $teamData[8][$i][8];
-		$matchCount=$i;
+		$matchCount++;
 	}
 	return($hatchCount/$matchCount);
 }
@@ -471,7 +471,7 @@ function getAvgRocketL1CargoA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][9];
-		$matchCount=$i;
+		$matchCount++;
 	}
 	return($cargoCount/$matchCount);
 }
@@ -482,7 +482,7 @@ function getAvgRocketL1HatchesA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$hatchCount = $hatchCount + $teamData[8][$i][10];
-		$matchCount=$i;
+		$matchCount++;
 	}
 	return($hatchCount/$matchCount);
 }
@@ -493,7 +493,7 @@ function getAvgRocketL2CargoA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][11];
-		$matchCount=$i;
+		$matchCount++;
 	}
 	return($cargoCount/$matchCount);
 }
@@ -504,7 +504,7 @@ function getAvgRocketL2HatchesA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$hatchCount = $hatchCount + $teamData[8][$i][12];
-		$matchCount=$i;
+		$matchCount++;
 	}
 	return($hatchCount/$matchCount);
 }
@@ -515,7 +515,7 @@ function getAvgRocketL3CargoA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][13];
-		$matchCount=$i;
+		$matchCount++;
 	}
 
 	return($cargoCount/$matchCount);
@@ -527,7 +527,7 @@ function getAvgRocketL3HatchesA($teamNumber){
 	$matchCount  = 0;
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$hatchCount = $hatchCount + $teamData[8][$i][14];
-		$matchCount=$i;
+		$matchCount++;
 	}
 	return($hatchCount/$matchCount);
 }
