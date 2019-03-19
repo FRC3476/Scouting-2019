@@ -443,28 +443,6 @@ include("databaseName.php");
 			}
 
 
-
-
-function getRocket2Cargo($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$matchN = matchNum($teamNumber);
-	$rocketGraphT = array();
-		for($i = 0; $i != sizeof($teamData[8]); $i++){
-			$rocketGraphT[$teamData[8][$i][11]] = $teamData[8][$i][11];
-
-		}
-		$out = array();
-
-		for($i = 0; $i != sizeof($matchN); $i++){
-			array_push($out , $rocketGraphT[$matchN[$i]]);
-		}
-	print_r($teamData[8]);
-	return ($out);
-}
-
-
-
-
 function getAvgCargoShipCargoA($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$cargoCount = 0;
@@ -702,6 +680,7 @@ function getAvgRocketL3Hatches($teamNumber){
 		sort($matchNum);
 		return ($matchNum);
 	}
+
 	function defenseComments($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$defenseComments = array();
@@ -743,4 +722,240 @@ function getAvgRocketL3Hatches($teamNumber){
 		}
 		return ($headScoutComments);
 	}
+
+
+	function getCargoShipCargo($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][7];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getCargoShipHatch($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][8];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL1Cargo($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][9];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL1Hatch($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][10];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL2Cargo($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][11];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL2Hatch($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][12];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL3Cargo($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][13];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL3Hatch($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][14];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+
+
+
+
+
+
+
+
+
+	function getCargoShipCargoT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][15];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getCargoShipHatchT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][16];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL1CargoT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][17];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL1HatchT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][18];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL2CargoT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][19];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL2HatchT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][20];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL3CargoT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][21];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+	function getRocketL3HatchT($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$matchN = matchNum($teamNumber);
+		$cubeGraphT = array();
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][22];
+		}
+		$out = array();
+		for($i = 0; $i != sizeof($matchN); $i++){
+			array_push($out , $cubeGraphT[$matchN[$i]]);
+		}
+		return ($out);
+	}
+
+
 ?>
