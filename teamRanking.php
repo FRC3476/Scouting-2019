@@ -20,6 +20,7 @@ include("header.php")?>
 					<th>Avg Auto Hatch</th>
 					<th>Second Level Climb</th>
 					<th>Third Level Climb</th>
+					<th>Times Playes Defense</th>
 				</tr>
 			<?php
 				include("databaseLibrary.php");
@@ -39,6 +40,7 @@ include("header.php")?>
 					   $avgAutoHatch = getAvgHatchA($TeamNumber);
 						 $secondClimb = getTotalClimbTwo($TeamNumber);
 						 $thirdClimb = getTotalClimbThree($TeamNumber);
+						 $timesDefense = getTotalDefense($TeamNumber);
 
 
 					echo("<tr>
@@ -53,6 +55,7 @@ include("header.php")?>
 					<th>".$avgAutoHatch."</th>
 					<th>".$secondClimb."</th>
 					<th>".$thirdClimb."</th>
+					<th>".$timesDefense."</th>
 
 					</tr>");
 				}
