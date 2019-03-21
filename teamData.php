@@ -91,23 +91,17 @@ var $ = jQuery.noConflict();
 					  </a>
 					</div>
 				</div>
-				<button class=" btn btn-material-red">Auto Cargo Ship Cargo</button>
-				<button class=" btn btn-material-cyan">Auto Cargo Ship Hatches</button>
-				<button class=" btn btn-material-orange">Teleop Cargo Ship Cargo</button>
-				<button class=" btn btn-material-purple">Teleop Cargo Ship Hatches</button>
-				
-				<button class=" btn btn-material-blue">Auto Rocket L1
-																							<br/>Auto Rocket L2
-																							<br/>Auto Rocket L3
-																							</button>
-				
+				<button class=" btn btn-material-purple">Auto Cargo</button>
+				<button class=" btn btn-material-orange">Auto Hatch</button>
+				<button class=" btn btn-material-green">Teleop Cargo</button>
+				<button class=" btn btn-material-magenta">Teleop Hatch</button>
 
-				<button class=" btn btn-material-green">Teleop Rocket L1
-																							<br/>Teleop Rocket L2
-																							<br/>Teleop Rocket L3
-																							</button>
-				
-				
+				<button class=" btn btn-material-blue">Second Level Climb</button>
+
+
+				<button class=" btn btn-material-red">Third Level Climb</button>
+
+
 				<canvas id="dataChart" width="300" height="250"></canvas>
 
 				<script>
@@ -116,168 +110,70 @@ var $ = jQuery.noConflict();
 								labels : <?php echo(json_encode(matchNum($teamNumber)));?>,
 								datasets : [
 									{
-										label: "Auto Cargo Ship Cargo",
+										label: "Level 3 Climbs",
 										fillColor : "rgba(220,220,220,0.1)",
 										strokeColor : "red",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ff0000",
 										pointHighlightFill : "#fff",
 										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getCargoShipCargo($teamNumber))); ?>
+										data : <?php echo(json_encode(getLevel3Climb($teamNumber))); ?>
 									},
+
 									{
-										label: "Auto Cargo Ship Hatches",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "cyan",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#ffa500",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getCargoShipHatch($teamNumber))); ?>
-									},
-									{
-										label: "Auto Rocket L1 Cargo",
+										label: "Level 2 Climbs",
 										fillColor : "rgba(220,220,220,0.1)",
 										strokeColor : "blue",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ffff00",
 										pointHighlightFill : "#fff",
 										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL1Cargo($teamNumber))); ?>
-									},
-									{
-										label: "Auto Rocket L1 Hatch",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "blue",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#00b300",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL1Hatch($teamNumber))); ?>
-									},
-									{
-										label: "Auto Rocket L2 Cargo",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "blue",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#3385ff",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL2Cargo($teamNumber))); ?>
-									},
-									{
-										label: "Auto Rocket L2 Hatches",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "blue",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#990099",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(151,187,205,1)",
-										data : <?php echo(json_encode(getRocketL2Hatch($teamNumber))); ?>
-									},
-									{
-										label: "Auto Rocket L3 Cargo",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "blue",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#3385ff",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL3Cargo($teamNumber))); ?>
-									},
-									{
-										label: "Auto Rocket L3 Hatches",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "blue",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#3385ff",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL3Cargo($teamNumber))); ?>
+										data : <?php echo(json_encode(getLevel2Climb($teamNumber))); ?>
 									},
 
-
 									{
-										label: "Teleop Cargo Ship Cargo",
+										label: "Auto Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
 										strokeColor : "orange",
 										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#ff0000",
+										pointStrokeColor : "#ffff00",
 										pointHighlightFill : "#fff",
 										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getCargoShipCargoT($teamNumber))); ?>
+										data : <?php echo(json_encode(getAutoHatches($teamNumber))); ?>
 									},
+
 									{
-										label: "Teleop Cargo Ship Hatches",
+										label: "Auto Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
 										strokeColor : "purple",
 										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#ffa500",
+										pointStrokeColor : "#ffff00",
 										pointHighlightFill : "#fff",
 										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getCargoShipHatchT($teamNumber))); ?>
+										data : <?php echo(json_encode(getAutoCargo($teamNumber))); ?>
 									},
+
 									{
-										label: "Teleop Rocket L1 Cargo",
+										label: "Teleop Cargo",
 										fillColor : "rgba(220,220,220,0.1)",
 										strokeColor : "green",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ffff00",
 										pointHighlightFill : "#fff",
 										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL1CargoT($teamNumber))); ?>
-									},
-									{
-										label: "Teleop Rocket L1 Hatch",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "green",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#00b300",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL1HatchT($teamNumber))); ?>
-									},
-									{
-										label: "Teleop Rocket L2 Cargo",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "green",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#3385ff",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL2CargoT($teamNumber))); ?>
-									},
-									{
-										label: "Teleop Rocket L2 Hatches",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "green",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#990099",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(151,187,205,1)",
-										data : <?php echo(json_encode(getRocketL2HatchT($teamNumber))); ?>
-									},
-									{
-										label: "Teleop Rocket L3 Cargo",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "green",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#3385ff",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL3CargoT($teamNumber))); ?>
-									},
-									{
-										label: "Teleop Rocket L3 Hatches",
-										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "green",
-										pointColor : "rgba(220,220,220,1)",
-										pointStrokeColor : "#3385ff",
-										pointHighlightFill : "#fff",
-										pointHighlightStroke : "rgba(220,220,220,1)",
-										data : <?php echo(json_encode(getRocketL3CargoT($teamNumber))); ?>
+										data : <?php echo(json_encode(getTeleopCargo($teamNumber))); ?>
 									},
 
+									{
+										label: "Teleop Hatches",
+										fillColor : "rgba(220,220,220,0.1)",
+										strokeColor : "magenta",
+										pointColor : "rgba(220,220,220,1)",
+										pointStrokeColor : "#ffff00",
+										pointHighlightFill : "#fff",
+										pointHighlightStroke : "rgba(220,220,220,1)",
+										data : <?php echo(json_encode(getTeleopHatches($teamNumber))); ?>
+									},
 
 								]
 							}
@@ -291,72 +187,36 @@ var $ = jQuery.noConflict();
 					<table class="table">
 					<tbody>
 						<tr class="info">
-							<td>Average Cargo On Cargo Ship in Teleop</td>
-							<td><?php echo(getAvgCargoShipCargo($teamNumber)); ?></td>
+							<td>Average Hatch</td>
+							<td><?php echo(getAvgHatch($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
-							<td>Average Hatches On Cargo Ship in Teleop</td>
-							<td><?php echo(getAvgCargoShipHatches($teamNumber)); ?></td>
+							<td>Average Cargo</td>
+							<td><?php echo(getAvgCargo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="danger">
-							<td>Average Cargo on Rocket Level 1 in Teleop</td>
-							<td><?php echo(getAvgRocketL1Cargo($teamNumber)); ?></td>
+							<td>Max Rocket Hatch</td>
+							<td><?php echo(getMaxRocketHatch($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="info">
-							<td>Average Hatches on Rocket Level 1 in Teleop</td>
-							<td><?php echo(getAvgRocketL1Hatches($teamNumber)); ?></td>
+							<td>Max Rocket Cargo</td>
+							<td><?php echo(getMaxRocketCargo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
-							<td>Average Cargo on Rocket Level 2 in Teleop</td>
-							<td><?php echo(getAvgRocketL2Cargo($teamNumber)); ?></td>
+							<td>Max Cargoship Hatch</td>
+							<td><?php echo(getMaxCargoshipHatch($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="danger">
-							<td>Average Hatches on Rocket Level 2 in Teleop</td>
-							<td><?php echo(getAvgRocketL2Hatches($teamNumber)); ?></td>
+							<td>Max Cargoship Cargo</td>
+							<td><?php echo(getMaxCargoshipCargo($teamNumber)); ?></td>
 					  </tr>
 						<tr class="success">
-							<td>Average Cargo on Rocket Level 3 in Teleop</td>
-							<td><?php echo(getAvgRocketL3Cargo($teamNumber)); ?></td>
+							<td>Average Cargo in Auto</td>
+							<td><?php echo(getAvgCargoA($teamNumber)); ?></td>
 						</tr>
 						<tr class="danger">
-							<td>Average Hatches on Rocket Level 3 in Teleop</td>
-							<td><?php echo(getAvgRocketL3Hatches($teamNumber)); ?></td>
-						</tr>
-
-
-
-
-						<tr class="info">
-							<td>Average Cargo On Cargo Ship in Auto</td>
-							<td><?php echo(getAvgCargoShipCargoA($teamNumber)); ?></td>
-						</tr>
-						<tr class="success">
-							<td>Average Hatches On Cargo Ship in Auto</td>
-							<td><?php echo(getAvgCargoShipHatchesA($teamNumber)); ?></td>
-						</tr>
-						<tr class="danger">
-							<td>Average Cargo on Rocket Level 1 in Auto</td>
-							<td><?php echo(getAvgRocketL1CargoA($teamNumber)); ?></td>
-						</tr>
-						<tr class="info">
-							<td>Average Hatches on Rocket Level 1 in Auto</td>
-							<td><?php echo(getAvgRocketL1HatchesA($teamNumber)); ?></td>
-						</tr>
-						<tr class="success">
-							<td>Average Cargo on Rocket Level 2 in Auto</td>
-							<td><?php echo(getAvgRocketL2CargoA($teamNumber)); ?></td>
-						</tr>
-						<tr class="danger">
-							<td>Average Hatches on Rocket Level 2 in Auto</td>
-							<td><?php echo(getAvgRocketL2HatchesA($teamNumber)); ?></td>
-						</tr>
-						<tr class="success">
-							<td>Average Cargo on Rocket Level 3 in Auto</td>
-							<td><?php echo(getAvgRocketL3CargoA($teamNumber)); ?></td>
-						</tr>
-						<tr class="danger">
-							<td>Average Hatches on Rocket Level 3 in Auto</td>
-							<td><?php echo(getAvgRocketL3HatchesA($teamNumber)); ?></td>
+							<td>Average Hatches in Auto</td>
+							<td><?php echo(getAvgHatchA($teamNumber)); ?></td>
 						</tr>
 
 					</tbody>
@@ -389,7 +249,7 @@ var $ = jQuery.noConflict();
 					  </tr>
 					</tbody>
 					</table>
-					
+
 				</div>
 			</div>
 			<div class = "col-md-4">
@@ -503,15 +363,19 @@ var $ = jQuery.noConflict();
 					<table class="table">
 					<tbody>
 						<tr class="danger">
-							<td>Total Single Climbs</td>
+							<td>Total Climbs</td>
+							<td><?php echo(getTotalClimb($teamNumber)); ?></td>
+					  </tr>
+						<tr class="danger">
+							<td>Total First Level Climbs</td>
 							<td><?php echo(getTotalClimb($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="info">
-							<td>Total Double Climbs</td>
+							<td>Total Second Level Climbs</td>
 							<td><?php echo(getTotalClimbTwo($teamNumber)); ?></td>
 					  </tr>
 					  <tr class="success">
-							<td>Total Triple Climbs</td>
+							<td>Total Third Level Climbs</td>
 							<td><?php echo(getTotalClimbThree($teamNumber)); ?></td>
 					  </tr>
 					</tbody>
