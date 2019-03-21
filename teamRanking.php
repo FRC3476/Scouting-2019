@@ -10,70 +10,53 @@ include("header.php")?>
 			<table  class="sortable table table-hover" id="RawData" border="1">
 				<tr>
 					<th>Team Number</th>
-					<th>Avg Switch A</th>
-					<th>Max Switch A</th>
-					<th>Avg Scale A</th>
-					<th>Max Scale A</th>
-					<th>Avg Switch T</th>
-					<th>Max Switch T</th>
-					<th>Avg Scale T</th>
-					<th>Max Scale T</th>
-					<th>Avg Opp Switch</th>
-					<th>Max Opp Switch</th>
-					<th>Avg Exchange</th>
-					<th>Max Exchange</th>
-					<th>Total 1 Climb</th>
-					<th>Total 2 Climb</th>
-					<th>Total 3 Climb</th>
-					<th>Total Defence</th>
+					<th>Avg Teleop Cargo</th>
+					<th>Avg Teleop Hatch</th>
+					<th>Max Rocket Cargo</th>
+					<th>Max Rocket Hatch</th>
+					<th>Max Cargoship Cargo</th>
+					<th>Max Cargoship Hatch</th>
+					<th>Avg Auto Cargo</th>
+					<th>Avg Auto Hatch</th>
+					<th>Second Level Climb</th>
+					<th>Third Level Climb</th>
 				</tr>
 			<?php
 				include("databaseLibrary.php");
 				$teamList = getTeamList();
 				//$TeamDat = array();
-				
+
 				foreach($teamList as $TeamNumber){
-		 
+
 					   $i=0;
-					   $avgSwitchA = getAvgOwnSwitchA($TeamNumber);
-					   $avgScaleA = getAvgOwnScaleA($TeamNumber);
-					   $avgSwitchT = getAvgOwnSwitchT($TeamNumber);
-					   $avgScaleT = getAvgOwnScaleT($TeamNumber);
-					   $avgOppSwitchT = getAvgOppSwitchT($TeamNumber);
-					   $avgExchangeT = getAvgExchangeT($TeamNumber);
-					   $totalClimb = getTotalClimb($TeamNumber);
-					   $twoClimb = getTotalClimbTwo($TeamNumber);
-					   $threeClimb = getTotalClimbThree($TeamNumber);
-					   $totalDefense = getTotalDefense($TeamNumber);
-					   $maxSwitchA = max(getSwitchA($TeamNumber));
-					   $maxSwitchT = max(getSwitchT($TeamNumber));
-					   $maxScaleT = max(getScaleT($TeamNumber));
-					   $maxScaleA = max(getScaleA($TeamNumber));
-					   $maxOppSwitchT = max(getOppSwitchT($TeamNumber));
-					   $maxExchangeT = max(getExchangeT($TeamNumber));
-				
-					
+					   $avgTeleopCargo = getAvgCargo($TeamNumber);
+					   $avgTeleopHatch = getAvgHatch($TeamNumber);
+					   $maxShipCargo = getMaxCargoshipCargo($TeamNumber);
+					   $maxShipHatch = getMaxCargoshipHatch($TeamNumber);
+					   $maxRocketCargo = getMaxRocketCargo($TeamNumber);
+					   $maxRocketHatch = getMaxRocketHatch($TeamNumber);
+					   $avgAutoCargo = getAvgCargoA($TeamNumber);
+					   $avgAutoHatch = getAvgHatchA($TeamNumber);
+						 $secondClimb = getTotalClimbTwo($TeamNumber);
+						 $thirdClimb = getTotalClimbThree($TeamNumber);
+
+
 					echo("<tr>
 					<td><a href='teamData.php?team=".$TeamNumber."'>".$TeamNumber."</a></td>
-					<th>".$avgSwitchA."</th>
-					<th>".$maxSwitchA."</th>
-					<th>".$avgScaleA."</th>
-					<th>".$maxScaleA."</th>
-					<th>".$avgSwitchT."</th>
-					<th>".$maxSwitchT."</th>
-					<th>".$avgScaleT."</th>
-					<th>".$maxScaleT."</th>
-					<th>".$avgOppSwitchT."</th>
-					<th>".$maxOppSwitchT."</th>
-					<th>".$avgExchangeT."</th>
-					<th>".$maxExchangeT."</th>
-					<th>".$totalClimb."</th>
-					<th>".$twoClimb."</th>
-					<th>".$threeClimb."</th>
-					<th>".$totalDefense."</th>
+					<th>".$avgTeleopCargo."</th>
+					<th>".$avgTeleopHatch."</th>
+					<th>".$maxShipCargo."</th>
+					<th>".$maxShipHatch."</th>
+					<th>".$maxRocketCargo."</th>
+					<th>".$maxRocketHatch."</th>
+					<th>".$avgAutoCargo."</th>
+					<th>".$avgAutoHatch."</th>
+					<th>".$secondClimb."</th>
+					<th>".$thirdClimb."</th>
+
 					</tr>");
 				}
-				
+
 			?>
 			</table>
 		</div>

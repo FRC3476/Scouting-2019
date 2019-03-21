@@ -443,94 +443,6 @@ include("databaseName.php");
 			}
 
 
-function getAvgCargoShipCargoA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$cargoCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$cargoCount = $cargoCount + $teamData[8][$i][7];
-		$matchCount++;
-	}
-	return($cargoCount/$matchCount);
-}
-
-function getAvgCargoShipHatchesA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$hatchCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$hatchCount = $hatchCount + $teamData[8][$i][8];
-		$matchCount++;
-	}
-	return($hatchCount/$matchCount);
-}
-
-function getAvgRocketL1CargoA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$cargoCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$cargoCount = $cargoCount + $teamData[8][$i][9];
-		$matchCount++;
-	}
-	return($cargoCount/$matchCount);
-}
-
-function getAvgRocketL1HatchesA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$hatchCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$hatchCount = $hatchCount + $teamData[8][$i][10];
-		$matchCount++;
-	}
-	return($hatchCount/$matchCount);
-}
-
-function getAvgRocketL2CargoA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$cargoCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$cargoCount = $cargoCount + $teamData[8][$i][11];
-		$matchCount++;
-	}
-	return($cargoCount/$matchCount);
-}
-
-function getAvgRocketL2HatchesA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$hatchCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$hatchCount = $hatchCount + $teamData[8][$i][12];
-		$matchCount++;
-	}
-	return($hatchCount/$matchCount);
-}
-
-function getAvgRocketL3CargoA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$cargoCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$cargoCount = $cargoCount + $teamData[8][$i][13];
-		$matchCount++;
-	}
-
-	return($cargoCount/$matchCount);
-}
-
-function getAvgRocketL3HatchesA($teamNumber){
-	$teamData = getTeamData($teamNumber);
-	$hatchCount = 0;
-	$matchCount  = 0;
-	for($i = 0; $i != sizeof($teamData[8]); $i++){
-		$hatchCount = $hatchCount + $teamData[8][$i][14];
-		$matchCount++;
-	}
-	return($hatchCount/$matchCount);
-}
 
 
 //Teleop Cargo and Hatch statistics
@@ -586,7 +498,7 @@ function getAvgHatch($teamNumber){
 }
 
 
-
+//Auto Cargo and Hatch statistics
 function getAvgHatchA($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$cargoCount = 0;
