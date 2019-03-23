@@ -285,6 +285,11 @@ var $ = jQuery.noConflict();
 							 <td><?php echo($teamData[10]); ?></td>
 						 </tr>
 					  </tr>
+
+						<tr class="info">
+							<td>Auto</td>
+							<td><?php echo($teamData[7]); ?></td>
+						</tr>
 					</tbody>
 					</table>
 				</div>
