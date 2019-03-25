@@ -259,17 +259,20 @@
 						<label>
 							<input id="bodyClimb" type="checkbox">
 						</label>
+					</div>
 					<div class="togglebutton" id="reach">
 						<h4><b>Successful Carry two other robots?(Only for Full Climb)</b></h4>
 						<label>
 							<input id="doubleBodyClimb" type="checkbox">
 						</label>
+						</div>
 				<a><h3><b><u>Defense:</u></b></h3></a>
 					<div class="togglebutton" id="reach">
 						<h4><b>Defense Played?</b></h4>
 						<label>
 							<input id="defenseBot" type="checkbox">
 						</label>
+						</div>
 					</div>
 					<br> <br>
 					<div style="padding: 5px; padding-bottom: 10;" >
