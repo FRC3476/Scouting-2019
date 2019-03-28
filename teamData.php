@@ -247,11 +247,11 @@ var $ = jQuery.noConflict();
 							<td>Max Cargoship Cargo</td>
 							<td><?php echo(getMaxCargoshipCargo($teamNumber)); ?></td>
 					  </tr>
-						<tr class="success">
+						<tr class="info">
 							<td>Average Cargo in Auto</td>
 							<td><?php echo(getAvgCargoA($teamNumber)); ?></td>
 						</tr>
-						<tr class="danger">
+						<tr class="success">
 							<td>Average Hatches in Auto</td>
 							<td><?php echo(getAvgHatchA($teamNumber)); ?></td>
 						</tr>
@@ -317,7 +317,7 @@ var $ = jQuery.noConflict();
 					  <tr class="danger">
 							<td>Pit Comments</td>
 							<td><?php echo($teamData[6]); ?></td>
-							<tr class="success">
+							<tr class="info">
 							 <td>Camera Stream</td>
 							 <td><?php echo($teamData[10]); ?></td>
 						 </tr>
@@ -404,19 +404,19 @@ var $ = jQuery.noConflict();
 				<div class="table-responsive">
 					<table class="table">
 					<tbody>
-						<tr class="danger">
+						<tr class="info">
 							<td>Total Climbs</td>
 							<td><?php echo(getTotalClimb($teamNumber)); ?></td>
 					  </tr>
-						<tr class="danger">
+						<tr class="success">
 							<td>Total First Level Climbs</td>
 							<td><?php echo(getTotalClimb($teamNumber)); ?></td>
 					  </tr>
-					  <tr class="info">
+					  <tr class="danger">
 							<td>Total Second Level Climbs</td>
 							<td><?php echo(getTotalClimbTwo($teamNumber)); ?></td>
 					  </tr>
-					  <tr class="success">
+					  <tr class="info">
 							<td>Total Third Level Climbs</td>
 							<td><?php echo(getTotalClimbThree($teamNumber)); ?></td>
 					  </tr>
