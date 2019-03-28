@@ -61,6 +61,28 @@ var $ = jQuery.noConflict();
 								}
 								$index++;
 						}
+
+						$index = 0;
+						while(file_exists("uploads/".$_GET["team"]."-".$index.".png")==1){
+								if($index == 0){
+									echo('<li data-target="#myCarousel" data-slide-to="'.$index.'" class="active"></li>');
+								}
+								else{
+									echo('<li data-target="#myCarousel" data-slide-to="'.$index.'"></li>');
+								}
+								$index++;
+						}
+
+						$index = 0;
+						while(file_exists("uploads/".$_GET["team"]."-".$index.".jpeg")==1){
+								if($index == 0){
+									echo('<li data-target="#myCarousel" data-slide-to="'.$index.'" class="active"></li>');
+								}
+								else{
+									echo('<li data-target="#myCarousel" data-slide-to="'.$index.'"></li>');
+								}
+								$index++;
+						}
 					?>
 					  </ol>
 					  <div class="carousel-inner" role="listbox">
@@ -75,6 +97,21 @@ var $ = jQuery.noConflict();
 								else{
 									echo('<div class="item" >
 											<img   id="'.$_GET["team"].'-'.$index.'" src="uploads/'.$_GET["team"].'-'.$index.'.jpg" >
+										 </div>');
+								}
+								$index++;
+						}
+
+						$index = 0;
+						while(file_exists("uploads/".$_GET["team"]."-".$index.".png")==1){
+								if($index == 0){
+									echo('<div class="item active" >
+											<img   id="'.$_GET["team"].'-'.$index.'" src="uploads/'.$_GET["team"].'-'.$index.'.png" >
+										 </div>');
+								}
+								else{
+									echo('<div class="item" >
+											<img   id="'.$_GET["team"].'-'.$index.'" src="uploads/'.$_GET["team"].'-'.$index.'.png" >
 										 </div>');
 								}
 								$index++;
@@ -94,7 +131,7 @@ var $ = jQuery.noConflict();
 				<button class=" btn btn-material-purple">Auto Cargo</button>
 				<button class=" btn btn-material-orange">Auto Hatch</button>
 				<button class=" btn btn-material-green">Teleop Cargo</button>
-				<button class=" btn btn-material-magenta">Teleop Hatch</button>
+				<button class=" btn btn-material-yellow">Teleop Hatch</button>
 
 				<button class=" btn btn-material-blue">Second Level Climb</button>
 
@@ -167,7 +204,7 @@ var $ = jQuery.noConflict();
 									{
 										label: "Teleop Hatches",
 										fillColor : "rgba(220,220,220,0.1)",
-										strokeColor : "magenta",
+										strokeColor : "yellow",
 										pointColor : "rgba(220,220,220,1)",
 										pointStrokeColor : "#ffff00",
 										pointHighlightFill : "#fff",

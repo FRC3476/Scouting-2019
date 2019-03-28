@@ -20,7 +20,6 @@ include("databaseName.php");
 		}
 		//new mysqli($servername, $username, $password, $dbname);
 		//error_log($queryString);
-
 		try{
 			$statement = $conn->prepare($queryString);
 		}
@@ -33,11 +32,9 @@ include("databaseName.php");
 			}
 			$statement = $conn->prepare($queryString);
 		}
-
 		if(!$statement->execute()){
 			die("Failed!" );
 		}
-
 		try{
 			//error_log("".$statement->fetchAll());
 			return $statement->fetchAll();
@@ -77,14 +74,12 @@ include("databaseName.php");
 			throw new Exception("constructDatabase Error: CREATE DATABASE query failed.");
 		}
 	}
-
 	function connectToServer(){
 		global $servername;
 		global $username;
 		global $password;
 		global $dbname;
 		global $charset;
-
 		$dsn = "mysql:host=".$servername.";charset=".$charset;
 		$opt = [
 			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -93,14 +88,12 @@ include("databaseName.php");
 		];
 		return(new PDO($dsn, $username, $password, $opt));
 	}
-
 	function connectToDB(){
 		global $servername;
 		global $username;
 		global $password;
 		global $dbname;
 		global $charset;
-
 		$dsn = "mysql:host=".$servername.";dbname=".$dbname.";charset=".$charset;
 		$opt = [
 			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -108,9 +101,7 @@ include("databaseName.php");
 			PDO::ATTR_EMULATE_PREPARES   => false
 		];
 		return(new PDO($dsn, $username, $password, $opt));
-
 	}
-
 	function createTables(){
 		global $servername;
 		global $username;
@@ -119,7 +110,6 @@ include("databaseName.php");
 		global $pitScoutTable;
 		global $matchScoutTable;
 		global $headScoutTable;
-
 		$conn = connectToDB();
 		$query = "CREATE TABLE ".$dbname.".".$pitScoutTable. " (
 			teamNumber VARCHAR(50) NOT NULL PRIMARY KEY,
@@ -137,7 +127,6 @@ include("databaseName.php");
 		if(!$statement->execute()){
 			throw new Exception("constructDatabase Error: CREATE TABLE pitScoutTable query failed.");
 		}
-
 		$query = "CREATE TABLE ".$dbname.".".$matchScoutTable. " (
 			user VARCHAR(20) NOT NULL,
 			ID VARCHAR(8) NOT NULL PRIMARY KEY,
@@ -146,27 +135,22 @@ include("databaseName.php");
 			allianceColor TEXT NOT NULL,
 			autoPath LONGTEXT NOT NULL,
 			crossLineA INT(11) NOT NULL,
-
 			cargoShipCargo INT(11) NOT NULL,
 			cargoShipHatch INT(11) NOT NULL,
-
 			rocket1Cargo INT(11) NOT NULL,
 			rocket1Hatch INT(11) NOT NULL,
 			rocket2Cargo INT(11) NOT NULL,
 			rocket2Hatch INT(11) NOT NULL,
 			rocket3Cargo INT(11) NOT NULL,
 			rocket3Hatch INT(11) NOT NULL,
-
 			cargoShipCargoT INT(11) NOT NULL,
 			cargoShipHatchT INT(11) NOT NULL,
-
 			rocket1CargoT INT(11) NOT NULL,
 			rocket1HatchT INT(11) NOT NULL,
 			rocket2CargoT INT(11) NOT NULL,
 			rocket2HatchT INT(11) NOT NULL,
 			rocket3CargoT INT(11) NOT NULL,
 			rocket3HatchT INT(11) NOT NULL,
-
 			climb TINYINT(4) NOT NULL,
 			climbTwo TINYINT(4) NOT NULL,
 			climbThree TINYINT(4) NOT NULL,
@@ -179,7 +163,6 @@ include("databaseName.php");
 		if(!$statement->execute()){
 			throw new Exception("constructDatabase Error: CREATE TABLE pitScoutTable query failed.");
 		}
-
 		$query = "CREATE TABLE ".$dbname.".".$headScoutTable. " (
 			matchNum INT(11) NOT NULL PRIMARY KEY,
 			team1 INT(11) NOT NULL,
@@ -206,22 +189,14 @@ include("databaseName.php");
 		global $pitScoutTable;
 		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`)";
 		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'")';
-
 		$queryOutput = runQuery($queryString);
-
 	}
-
-
 	/*function pitScoutInput($matchNum,$teamNum,){
 		global $pitScoutTable;
 		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`)";
 		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'")';
-
 		$queryOutput = runQuery($queryString);
-
 	}*/
-
-
 	//Input- getTeamList, accesses pit scout table and gets team numbers from it.
 	//Output- array, list of teams in teamNumber column of 17template_pitscout table.
 	function getTeamList(){
@@ -332,7 +307,6 @@ include("databaseName.php");
 															 "'.$defenseComments.'",
 															 "'.$matchComments.'")';
 		$queryOutput = runQuery($queryString);
-
 	}
 	function headScoutInput($matchNum,
 							$team1,
@@ -382,7 +356,6 @@ include("databaseName.php");
 		error_log($queryString);
 		$queryOutput = runQuery($queryString);
 	}
-
 	function getTeamData($teamNumber){
 		global $servername;
 		global $username;
@@ -391,8 +364,6 @@ include("databaseName.php");
 		global $pitScoutTable;
 		global $matchScoutTable;
 		global $headScoutTable;
-
-
 		$qs1 = "SELECT * FROM `".$pitScoutTable."` WHERE teamNumber = ".$teamNumber."";
 		$qs2 = "SELECT * FROM `".$matchScoutTable."`  WHERE teamNum = ".$teamNumber."";
 		$qs3 = "SELECT * FROM `".$headScoutTable."`";
@@ -408,11 +379,9 @@ include("databaseName.php");
 				$pitExists = True;
 			}
 		}
-
 		if(!$pitExists){
 			array_push( $teamData, $teamNumber, 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', array(), array());
 		}
-
 		if($result2 != FALSE){
 					foreach ($result2 as $row_key => $row){
 						array_push(	$teamData[8], array($row["user"], $row["ID"], $row["matchNum"],
@@ -420,12 +389,9 @@ include("databaseName.php");
 									$row["crossLineA"], $row["cargoShipCargo"], $row["cargoShipHatch"],
 									$row["rocket1Cargo"], $row["rocket1Hatch"], $row["rocket2Cargo"],
 									$row["rocket2Hatch"],  $row["rocket3Cargo"], $row["rocket3Hatch"],
-
 									$row["cargoShipCargoT"], $row["cargoShipHatchT"],
 									$row["rocket1CargoT"], $row["rocket1HatchT"], $row["rocket2CargoT"],
 									$row["rocket2HatchT"],  $row["rocket3CargoT"], $row["rocket3HatchT"],
-
-
 									$row["climb"], $row["climbTwo"], $row["climbThree"], $row["issues"],
 									$row["defenseBot"], $row["defenseComments"], $row["matchComments"]));
 					}
@@ -441,120 +407,87 @@ include("databaseName.php");
 				//print_r($teamData);
 				return($teamData);
 			}
-
-
-
-
 //Teleop Cargo and Hatch statistics
 function getAvgCargo($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$cargoCount = 0;
 	$matchCount  = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][15];
 		$matchCount++;
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][17];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][19];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][21];
 	}
-
 	return($cargoCount/$matchCount);
 }
-
-
 function getAvgHatch($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$cargoCount = 0;
 	$matchCount  = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][16];
 		$matchCount++;
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][18];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][20];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][22];
 	}
-
 	return($cargoCount/$matchCount);
 }
-
-
 //Auto Cargo and Hatch statistics
 function getAvgHatchA($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$cargoCount = 0;
 	$matchCount  = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][8];
 		$matchCount++;
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][10];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][12];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][14];
 	}
-
 	return($cargoCount/$matchCount);
 }
-
-
-
 function getAvgCargoA($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$cargoCount = 0;
 	$matchCount  = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][7];
 		$matchCount++;
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][9];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][11];
 	}
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 		$cargoCount = $cargoCount + $teamData[8][$i][13];
 	}
-
 	return($cargoCount/$matchCount);
 }
-
 function getMaxCargoshipCargo($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$maxCargo = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 			if($maxCargo < $teamData[8][$i][15]){
 				$maxCargo = $teamData[8][$i][15];
@@ -562,11 +495,9 @@ function getMaxCargoshipCargo($teamNumber){
 	}
 	return($maxCargo);
 }
-
 function getMaxCargoshipHatch($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$maxHatch = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 			if($maxHatch < $teamData[8][$i][16]){
 				$maxHatch = $teamData[8][$i][16];
@@ -574,58 +505,40 @@ function getMaxCargoshipHatch($teamNumber){
 	}
 	return($maxHatch);
 }
-
-
 function getMaxRocketCargo($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$maxCargo = 0;
 	$cargoSum = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 			$cargoSum = $teamData[8][$i][17]+$teamData[8][$i][19]+$teamData[8][$i][21];
-
 			if($maxCargo < $cargoSum){
 				$maxCargo = $cargoSum;
 			}
 	}
 	return($maxCargo);
 }
-
-
-
 function getMaxRocketHatch($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$maxHatch = 0;
 	$cargoSum = 0;
-
 	for($i = 0; $i != sizeof($teamData[8]); $i++){
 			$cargoSum = $teamData[8][$i][18]+$teamData[8][$i][20]+$teamData[8][$i][22];
-
 			if($maxHatch < $cargoSum){
 				$maxHatch = $cargoSum;
 			}
 	}
 	return($maxHatch);
 }
-
-
-
-
 	function getAllMatchData(){
 		global $matchScoutTable;
 		$qs1 = "SELECT * FROM `".$matchScoutTable."`";
 		return runQuery($qs1);
 	}
-
 	function getAllHeadScoutData(){
 		global $headScoutTable;
 		$qs1 = "SELECT * FROM `".$headScoutTable."`";
 		return runQuery($qs1);
-
 	}
-
-
-
 	function getTotalClimb($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$climbCount = 0;
@@ -658,7 +571,6 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($defenseCount);
 	}
-
 	function matchNum($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchNum = array();
@@ -668,7 +580,6 @@ function getMaxRocketHatch($teamNumber){
 		sort($matchNum);
 		return ($matchNum);
 	}
-
 	function defenseComments($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$defenseComments = array();
@@ -710,10 +621,6 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($headScoutComments);
 	}
-
-
-
-
 	function getLevel3Climb($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchN = matchNum($teamNumber);
@@ -727,7 +634,6 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($out);
 	}
-
 	function getLevel2Climb($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchN = matchNum($teamNumber);
@@ -741,9 +647,6 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($out);
 	}
-
-
-
 	function getAutoHatches($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchN = matchNum($teamNumber);
@@ -757,9 +660,6 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($out);
 	}
-
-
-
 	function getAutoCargo($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchN = matchNum($teamNumber);
@@ -773,10 +673,6 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($out);
 	}
-
-
-
-
 	function getTeleopCargo($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchN = matchNum($teamNumber);
@@ -790,9 +686,6 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($out);
 	}
-
-
-
 	function getTeleopHatches($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$matchN = matchNum($teamNumber);
@@ -806,5 +699,4 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($out);
 	}
-
 ?>
