@@ -7,7 +7,7 @@ function filter($str){
 
 if( isset( $_POST['matchNum'] ) ) {
 include("databaseLibrary.php");
-$user = filter($_POST['user']);
+$user = filter($_POST['userName']);
 
 $matchNum = filter($_POST['matchNum']);
 $teamNum = filter($_POST['teamNum']);
