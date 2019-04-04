@@ -3,7 +3,7 @@
 	if($_FILES["fileToUpload"]["name"]){
     
     $target_dir = "uploads/";
-    $imageFileType = pathinfo(basename($_FILES["fileToUpload"]["name"]),PATHINFO_EXTENSION);
+    $imageFileType = strtolower(pathinfo(basename($_FILES["fileToUpload"]["name"]),PATHINFO_EXTENSION));
     $target_file = $target_dir . $teamNumber;
     $uploadOk = 1;
     // Check if image file is a actual image or fake image
