@@ -5,7 +5,60 @@
 <script src="Orange-Rind/js/orangePersist.js"></script>
 <script src="matchInputButtons.js"></script>
 <script src="matchInputDynamic.js"></script>
-<script src="matchInputPost.js"></script>
+<!--<script src="matchInputPost.js"></script>-->
+<script>
+
+function postwith(to){
+	if(document.getElementById('penalties').value==""){
+		document.getElementById('penalties').value=0;
+	}
+
+		var nums = {
+		'userName' : document.getElementById('userName').value,
+		'matchNum' : document.getElementById('matchNum').value,
+		'teamNum' : document.getElementById('teamNum').value,
+		'allianceColor' : document.getElementById('allianceColor').value,
+		'autoPath' : JSON.stringify(coordinateList),
+		'crossLineA' : document.getElementById('crossLineA').checked?1:0,
+
+		'cargoShipCargo' : cargoShipCargo,
+		'cargoShipHatch' : cargoShipHatch,
+		'rocket1Cargo' : rocket1Cargo,
+		'rocket1Hatch' : rocket1Hatch,
+		'rocket2Cargo' : rocket2Cargo,
+		'rocket2Hatch' : rocket2Hatch,
+		'rocket3Cargo' : rocket3Cargo,
+		'rocket3Hatch' : rocket3Hatch,
+
+		'cargoShipCargoT' : cargoShipCargoT,
+		'cargoShipHatchT' : cargoShipHatchT,
+		'rocket1CargoT' : rocket1CargoT,
+		'rocket1HatchT' : rocket1HatchT,
+		'rocket2CargoT' : rocket2CargoT,
+		'rocket2HatchT' : rocket2HatchT,
+		'rocket3CargoT' : rocket3CargoT,
+		'rocket3HatchT' : rocket3HatchT,
+
+
+		'climb' : document.getElementById('climb').checked?1:0,
+		'climbTwo' : document.getElementById('climbTwo').checked?1:0,
+		'climbThree' : document.getElementById('climbThree').checked?1:0,
+		'issues' : document.getElementById('issues').value,
+		'defenseBot' : document.getElementById('defenseBot').checked?1:0,
+		'defenseComments' : document.getElementById('defenseComments').value,
+		'matchComments' : document.getElementById('matchComments').value,
+
+		'penalties' : document.getElementById('penalties').value,
+		};
+
+		var id = document.getElementById('matchNum').value + "-" + document.getElementById('teamNum').value;
+		console.log(JSON.stringify(nums));
+		console.log("Hello");
+		orangePersist.collection("avr").doc(id).set(nums);
+		$.post( "dataHandler.php", nums).done(function( data ) {
+		});
+	}
+</script>
 <body>
 
 <div class="container row-offcanvas row-offcanvas-left">
@@ -54,28 +107,28 @@
 				<div class="col-md-3">
 							<a><h3><b><u>Rocket Levels:</u></b></h3></a>
 							<!--Rocket Level 1-->
-							<button type="button" onClick="updateRocketL1Cargo()" class="enlargedtext stylishCargo"><a id="rocket1Cargo" class="enlargedtext">0</a> Cargo</button>
-							<button type="button" onClick="updateRocketL1Hatch()" class="enlargedtext stylishHatch">Hatches <a id="rocket1Hatch" class="enlargedtext">0</a></button>
+							<button type="button" onClick="updateRocketL3Cargo()" class="enlargedtext stylishCargo" id="bigFont"><a id="rocket3Cargo" class="enlargedtext">0</a> Cargo</button>
+							<button type="button" onClick="updateRocketL3Hatch()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="rocket3Hatch" class="enlargedtext">0</a></button>
 							<br/>
 							<br/>
 
 							<!--Rocket Level 2-->
-							<button type="button" onClick="updateRocketL2Cargo()" class="enlargedtext stylishCargo"><a id="rocket2Cargo" class="enlargedtext">0</a> Cargo</button>
-							<button type="button" onClick="updateRocketL2Hatch()" class="enlargedtext stylishHatch">Hatches <a id="rocket2Hatch" class="enlargedtext">0</a></button>
+							<button type="button" onClick="updateRocketL2Cargo()" class="enlargedtext stylishCargo" id="bigFont"><a id="rocket2Cargo" class="enlargedtext">0</a> Cargo</button>
+							<button type="button" onClick="updateRocketL2Hatch()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="rocket2Hatch" class="enlargedtext">0</a></button>
 							<br/>
 							<br/>
 
 							<!--Rocket Level 3-->
-							<button type="button" onClick="updateRocketL3Cargo()" class="enlargedtext stylishCargo"><a id="rocket3Cargo" class="enlargedtext">0</a> Cargo</button>
-							<button type="button" onClick="updateRocketL3Hatch()" class="enlargedtext stylishHatch">Hatches <a id="rocket3Hatch" class="enlargedtext">0</a></button>
+							<button type="button" onClick="updateRocketL1Cargo()" class="enlargedtext stylishCargo" id="bigFont"><a id="rocket1Cargo" class="enlargedtext">0</a> Cargo</button>
+							<button type="button" onClick="updateRocketL1Hatch()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="rocket1Hatch" class="enlargedtext">0</a></button>
 							<br>
 							<br>
 							<br>
 
 							<!--Cargo Ship-->
 							<a><h3><b><u>Cargo Ship:</u></b></h3></a>
-							<button type="button" onClick="updateShipCargo()" class="enlargedtext stylishCargo"><a id="cargoShipCargo" class="enlargedtext">0</a> Cargo</button>
-							<button type="button" onClick="updateShipHatch()" class="enlargedtext stylishHatch">Hatches <a id="cargoShipHatch" class="enlargedtext">0</a></button>
+							<button type="button" onClick="updateShipCargo()" class="enlargedtext stylishCargo" id="bigFont"><a id="cargoShipCargo" class="enlargedtext">0</a> Cargo</button>
+							<button type="button" onClick="updateShipHatch()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="cargoShipHatch" class="enlargedtext">0</a></button>
 							<br>
 							<br>
 							<br>
@@ -87,6 +140,7 @@
 								<input id="updateMode" type="checkbox" onclick="changeMode()" checked>
 							</label>
 						</div>
+
 					</div>
 			</div>
 		</div>
@@ -198,31 +252,31 @@
 
 						<!--Cargo Ship-->
 						<a><h3><b><u>Cargo Ship:</u></b></h3></a>
-						<button type="button" onClick="updateShipCargoT()" class="enlargedtext stylishCargo"><a id="cargoShipCargoT" class="enlargedtext">0</a> Cargo</button>
-						<button type="button" onClick="updateShipHatchT()" class="enlargedtext stylishHatch">Hatches <a id="cargoShipHatchT" class="enlargedtext">0</a></button>
+						<button type="button" onClick="updateShipCargoT()" class="enlargedtext stylishCargo" id="bigFont"><a id="cargoShipCargoT" class="enlargedtext">0</a> Cargo</button>
+						<button type="button" onClick="updateShipHatchT()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="cargoShipHatchT" class="enlargedtext">0</a></button>
 						<br>
 						<br>
 						<br>
 
 						<a><h3><b><u>Rocket Levels:</u></b></h3></a>
-						<button type="button" onClick="updateRocketL1CargoT()" class="enlargedtext stylishCargo"><a id="rocket1CargoT" class="enlargedtext">0</a> Cargo</button>
-						<button type="button" onClick="updateRocketL1HatchT()" class="enlargedtext stylishHatch">Hatches <a id="rocket1HatchT" class="enlargedtext">0</a></button>
+						<button type="button" onClick="updateRocketL3CargoT()" class="enlargedtext stylishCargo" id="bigFont"><a id="rocket3CargoT" class="enlargedtext">0</a> Cargo</button>
+						<button type="button" onClick="updateRocketL3HatchT()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="rocket3HatchT" class="enlargedtext">0</a></button>
 						<br>
 						<br>
 
-						<button type="button" onClick="updateRocketL2CargoT()" class="enlargedtext stylishCargo"><a id="rocket2CargoT" class="enlargedtext">0</a> Cargo</button>
-						<button type="button" onClick="updateRocketL2HatchT()" class="enlargedtext stylishHatch">Hatches <a id="rocket2HatchT" class="enlargedtext">0</a></button>
+						<button type="button" onClick="updateRocketL2CargoT()" class="enlargedtext stylishCargo" id="bigFont"><a id="rocket2CargoT" class="enlargedtext">0</a> Cargo</button>
+						<button type="button" onClick="updateRocketL2HatchT()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="rocket2HatchT" class="enlargedtext">0</a></button>
 						<br>
 						<br>
 
-						<button type="button" onClick="updateRocketL3CargoT()" class="enlargedtext stylishCargo"><a id="rocket3CargoT" class="enlargedtext">0</a> Cargo</button>
-						<button type="button" onClick="updateRocketL3HatchT()" class="enlargedtext stylishHatch">Hatches <a id="rocket3HatchT" class="enlargedtext">0</a></button>
+						<button type="button" onClick="updateRocketL1CargoT()" class="enlargedtext stylishCargo" id="bigFont"><a id="rocket1CargoT" class="enlargedtext">0</a> Cargo</button>
+						<button type="button" onClick="updateRocketL1HatchT()" class="enlargedtext stylishHatch" id="bigFont">Hatches <a id="rocket1HatchT" class="enlargedtext">0</a></button>
 						<br>
 						<br>
 						<div class="togglebutton" id="reach">
 							<h4 id="updateModeToggle2"><b><u>Adding</u></b></h4>
 							<label>
-								<input id="updateMode" type="checkbox" onclick="changeMode2()" checked>
+								<input id="updateMode2" type="checkbox" onclick="changeMode2()" checked>
 							</label>
 						</div>
 
@@ -254,18 +308,7 @@
 							<input id="climbThree" type="checkbox">
 						</label>
 					</div>
-					<div class="togglebutton" id="reach">
-						<h4><b>Successful Carry another robot?(Only for Full Climb)</b></h4>
-						<label>
-							<input id="bodyClimb" type="checkbox">
-						</label>
-					</div>
-					<div class="togglebutton" id="reach">
-						<h4><b>Successful Carry two other robots?(Only for Full Climb)</b></h4>
-						<label>
-							<input id="doubleBodyClimb" type="checkbox">
-						</label>
-						</div>
+
 				<a><h3><b><u>Defense:</u></b></h3></a>
 					<div class="togglebutton" id="reach">
 						<h4><b>Defense Played?</b></h4>
@@ -280,12 +323,20 @@
 					<textarea placeholder="How well they played defense, Strategy for defense" type="text" id="defenseComments" class="form-control md-textarea" rows="6"></textarea>
 					</div>
 					<br> <br>
+
+					<div style="padding: 5px; padding-bottom: 10;" >
+					<h4><b><u>Penalties: </u></b></h4>
+					<textarea placeholder="Number of Penalties" type="text" id="penalties" class="form-control md-textarea" rows="6">0</textarea>
+					</div>
+
+					<br> <br>
 					<div style="padding: 5px; padding-bottom: 10;" >
 					<h4><b><u>Comments / Strategy: </u></b></h4>
 					<textarea placeholder="Please write strategy of the robot or interesting observations of the robot" type="text" id="matchComments" class="form-control md-textarea" rows="6"></textarea>
 					<br>
-					<input type="button" value="Submit Data" id="submitButton" class="btn btn-primary" onclick="postwith('');" />
+					<input type="button" value="Submit Data" id="submitButton" class="btn btn-primary" onclick="postwith(''); location.reload();" />
 					</div>
+
 				</div>
 			</div>
 		</div>
@@ -323,6 +374,14 @@
 	.stylishCargo:hover{
 		background-color:Orange;
 		border-color:Orange;
+	}
+
+	#bigFont{
+		font-size:17px
+	}
+
+	.feedback:hover{
+		background-color:Orange;
 	}
 </style>
 </body>

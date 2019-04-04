@@ -7,7 +7,11 @@ function filter($str){
  if( isset( $_POST['teamNumber'] ) ) {
 	if(!isset($_POST['cameraStream'])){
 		$_POST['cameraStream']="off";
-	} 
+	}
+
+	if(!isset($_POST['doubleClimb'])){
+		$_POST['doubleClimb']="off";
+	}
 	 include("databaseLibrary.php");
 	 $cameraStream = filter($_POST['cameraStream']);
 	 $teamNum = filter($_POST['teamNumber']);
@@ -19,6 +23,8 @@ function filter($str){
 	 $driveTrain = filter($_POST['driveTrain']);
 	 $pitComments = filter($_POST['pitComments']);
 	 $auto = filter($_POST['auto']);
+	 $driveSkills = filter($_POST['driveSkills']);
+	 $doubleClimb = filter($_POST['doubleClimb']);
 
 	 pitScoutInput( $teamNum,
 				 $teamName,
@@ -29,7 +35,9 @@ function filter($str){
 				 $driveTrain,
 				 $pitComments,
 				 $auto,
-				 $cameraStream);
+				 $cameraStream,
+			 	 $driveSkills,
+			 	 $doubleClimb);
 
  }
  ?>
@@ -107,6 +115,14 @@ function filter($str){
 				<br>
 				</div>
 
+				<div class="col-lg-2">
+				<b><br>Driving Skills: </b>
+				</div>
+					<div class="col-lg-10">
+					<input type="text" class="form-control" id="driveSkills" name="driveSkills" placeholder=" ">
+					<br>
+					</div>
+
 			<div class="col-lg-2">
 			<b><br>Auto: </b>
 			</div>
@@ -119,6 +135,13 @@ function filter($str){
 
 				<div>
 				<b><br>Live Stream: <label class="container2"><input type="checkbox" name="cameraStream"><span class="checkmark"></span>
+				</label></b>
+				</div>
+				<br/>
+				<br/>
+
+				<div>
+				<b><br>Double Climb With Us: <label class="container2"><input type="checkbox" name="doubleClimb"><span class="checkmark"></span>
 				</label></b>
 				</div>
 				<br/>

@@ -247,13 +247,18 @@ var $ = jQuery.noConflict();
 							<td>Max Cargoship Cargo</td>
 							<td><?php echo(getMaxCargoshipCargo($teamNumber)); ?></td>
 					  </tr>
-						<tr class="info">
+						<tr class="success">
 							<td>Average Cargo in Auto</td>
 							<td><?php echo(getAvgCargoA($teamNumber)); ?></td>
 						</tr>
-						<tr class="success">
+						<tr class="danger">
 							<td>Average Hatches in Auto</td>
 							<td><?php echo(getAvgHatchA($teamNumber)); ?></td>
+						</tr>
+
+						<tr class="info">
+							<td>Highest Teleop Rocket Level</td>
+							<td><?php echo(getHighestRocket($teamNumber)); ?></td>
 						</tr>
 
 					</tbody>
@@ -284,6 +289,11 @@ var $ = jQuery.noConflict();
 											echo("$hc[$i].").PHP_EOL;
 										}?></td>
 					  </tr>
+
+						<tr class="danger">
+							<td>Average Penalties</td>
+							<td><?php echo(getAvgPenalties($teamNumber));?></td>
+						</tr>
 					</tbody>
 					</table>
 
@@ -314,10 +324,22 @@ var $ = jQuery.noConflict();
 							<td>Drive Train</td>
 							<td><?php echo($teamData[5]); ?></td>
 					  </tr>
+
+						<tr class="info">
+						 <td>Drive Skills</td>
+						 <td><?php echo($teamData[11]); ?></td>
+					 </tr>
+
+					 <tr class="success">
+						<td>Can Climb With Another Robot</td>
+						<td><?php echo($teamData[12]); ?></td>
+					</tr>
+
+
 					  <tr class="danger">
 							<td>Pit Comments</td>
 							<td><?php echo($teamData[6]); ?></td>
-							<tr class="info">
+							<tr class="success">
 							 <td>Camera Stream</td>
 							 <td><?php echo($teamData[10]); ?></td>
 						 </tr>
@@ -353,7 +375,7 @@ var $ = jQuery.noConflict();
 							var ctx = document.getElementById("dataChart").getContext("2d");
 							window.myLine = new Chart(ctx).Line(lineChartData, {responsive: true});
 						  };
-						  imageObj.src = 'images/autoPath.png';
+						  imageObj.src = 'images/RedField.png';
 
 						function makeCanvasReady(){
 							context.clearRect(0, 0, 300, 330);
@@ -404,19 +426,19 @@ var $ = jQuery.noConflict();
 				<div class="table-responsive">
 					<table class="table">
 					<tbody>
-						<tr class="info">
+						<tr class="danger">
 							<td>Total Climbs</td>
 							<td><?php echo(getTotalClimb($teamNumber)); ?></td>
 					  </tr>
-						<tr class="success">
+						<tr class="danger">
 							<td>Total First Level Climbs</td>
 							<td><?php echo(getTotalClimb($teamNumber)); ?></td>
 					  </tr>
-					  <tr class="danger">
+					  <tr class="info">
 							<td>Total Second Level Climbs</td>
 							<td><?php echo(getTotalClimbTwo($teamNumber)); ?></td>
 					  </tr>
-					  <tr class="info">
+					  <tr class="success">
 							<td>Total Third Level Climbs</td>
 							<td><?php echo(getTotalClimbThree($teamNumber)); ?></td>
 					  </tr>

@@ -43,6 +43,7 @@ $issues = filter($_POST['issues']);
 $defenseBot = filter($_POST['defenseBot']);
 $defenseComments = filter($_POST['defenseComments']);
 $matchComments = filter($_POST['matchComments']);
+$penalties = filter($_POST['penalties']);
 
  matchInput( $user,
             $ID,
@@ -73,7 +74,8 @@ $matchComments = filter($_POST['matchComments']);
             $issues,
             $defenseBot,
             $defenseComments,
-            $matchComments);
+            $matchComments,
+            $penalties);
 }
 
 ?>

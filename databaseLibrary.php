@@ -121,7 +121,9 @@ include("databaseName.php");
 			driveTrain VARCHAR(20) NOT NULL,
 			pitComments VARCHAR(100) NOT NULL,
 			auto VARCHAR(20) NOT NULL,
-			cameraStream VARCHAR(4) NOT NULL
+			cameraStream VARCHAR(4) NOT NULL,
+			driveSkills VARCHAR(20) NOT NULL,
+			doubleClimb VARCHAR(4) NOT NULL
 		)";
 		$statement = $conn->prepare($query);
 		if(!$statement->execute()){
@@ -157,7 +159,8 @@ include("databaseName.php");
 			issues LONGTEXT NOT NULL,
 			defenseBot TINYINT(4) NOT NULL,
 			defenseComments LONGTEXT NOT NULL,
-			matchComments LONGTEXT NOT NULL
+			matchComments LONGTEXT NOT NULL,
+			penalties INT(11) NOT NULL
 		)";
 		$statement = $conn->prepare($query);
 		if(!$statement->execute()){
@@ -185,10 +188,10 @@ include("databaseName.php");
 	}
 	//Input- pitScoutInput, Data from pit scout form is assigned to columns in 17template_pitscout.
 	//Output- queryString and "Success" statement, data put in columns.
-	function pitScoutInput($teamNum, $teamName, $weight, $height, $numBatteries,$chargedBatteries, $driveTrain, $pitComments, $auto, $cameraStream){
+	function pitScoutInput($teamNum, $teamName, $weight, $height, $numBatteries,$chargedBatteries, $driveTrain, $pitComments, $auto, $cameraStream, $driveSkills, $doubleClimb){
 		global $pitScoutTable;
-		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`)";
-		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'")';
+		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`, `driveSkills`, `doubleClimb`)";
+		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'", "'.$driveSkills.'", "'.$doubleClimb.'")';
 		$queryOutput = runQuery($queryString);
 	}
 	/*function pitScoutInput($matchNum,$teamNum,){
@@ -209,6 +212,8 @@ include("databaseName.php");
 			}
 		return($teams);
 	}
+
+
 	//Input- pitScoutInput, Data from pit scout form is assigned to columns in 17template_matchinput.
 	//Output- queryString and "Success" statement, data put in columns.
 	function matchInput( $user,
@@ -240,7 +245,8 @@ include("databaseName.php");
              $issues,
              $defenseBot,
              $defenseComments,
-             $matchComments){
+             $matchComments,
+					 	 $penalties){
 		global $servername;
 		global $username;
 		global $password;
@@ -275,7 +281,8 @@ include("databaseName.php");
 															 `issues`,
 															 `defenseBot`,
 															 `defenseComments`,
-															 `matchComments`)
+															 `matchComments`,
+														 		`penalties`)
 													VALUES ( "'.$user.'",
 															 "'.$ID.'",
 															 "'.$matchNum.'",
@@ -305,7 +312,8 @@ include("databaseName.php");
 															 "'.$issues.'",
 															 "'.$defenseBot.'",
 															 "'.$defenseComments.'",
-															 "'.$matchComments.'")';
+															 "'.$matchComments.'",
+														   "'.$penalties.'")';
 		$queryOutput = runQuery($queryString);
 	}
 	function headScoutInput($matchNum,
@@ -375,7 +383,7 @@ include("databaseName.php");
 		if($result != FALSE){
 			// output data of each row
 			foreach ($result as $row_key => $row){
-			array_push( $teamData, $row["teamName"], $row["weight"], $row["height"], $row["numBatteries"], $row["chargedBatteries"], $row["driveTrain"], $row["pitComments"], $row["auto"], array(), array(), $row["cameraStream"]);
+			array_push( $teamData, $row["teamName"], $row["weight"], $row["height"], $row["numBatteries"], $row["chargedBatteries"], $row["driveTrain"], $row["pitComments"], $row["auto"], array(), array(), $row["cameraStream"], $row["driveSkills"], $row["doubleClimb"]);
 				$pitExists = True;
 			}
 		}
@@ -393,7 +401,7 @@ include("databaseName.php");
 									$row["rocket1CargoT"], $row["rocket1HatchT"], $row["rocket2CargoT"],
 									$row["rocket2HatchT"],  $row["rocket3CargoT"], $row["rocket3HatchT"],
 									$row["climb"], $row["climbTwo"], $row["climbThree"], $row["issues"],
-									$row["defenseBot"], $row["defenseComments"], $row["matchComments"]));
+									$row["defenseBot"], $row["defenseComments"], $row["matchComments"], $row["penalties"]));
 					}
 				}
 				if($result3 != FALSE){
@@ -408,6 +416,29 @@ include("databaseName.php");
 				return($teamData);
 			}
 //Teleop Cargo and Hatch statistics
+
+function getHighestRocket($teamNumber){
+
+	$teamData = getTeamData($teamNumber);
+	$highestLevel = 0;
+
+
+	for($i = 0; $i != sizeof($teamData[8]); $i++){
+		if($teamData[8][$i][21]>=1 ||$teamData[8][$i][22]>=1){
+			$highestLevel=3;
+			break;
+		}
+		else if($teamData[8][$i][19]>=1 ||$teamData[8][$i][20]>=1){
+			$highestLevel=2;
+		}
+		else if($teamData[8][$i][17]>=1 || $teamData[8][$i][18]>=1){
+			$highestLevel=1;
+		}
+	}
+
+	return($highestLevel);
+}
+
 function getAvgCargo($teamNumber){
 	$teamData = getTeamData($teamNumber);
 	$cargoCount = 0;
@@ -698,5 +729,17 @@ function getMaxRocketHatch($teamNumber){
 			array_push($out , $cubeGraphT[$matchN[$i]]);
 		}
 		return ($out);
+	}
+
+	function getAvgPenalties($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$penalCount = 0;
+		$matchCount  = 0;
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			$penalCount = $penalCount + $teamData[8][$i][30];
+			$matchCount++;
+		}
+		error_log($penalCount/$matchCount);
+		return($penalCount/$matchCount);
 	}
 ?>
