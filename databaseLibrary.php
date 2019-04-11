@@ -179,7 +179,13 @@ include("databaseName.php");
 			strategy3 LONGTEXT NOT NULL,
 			strategy4 LONGTEXT NOT NULL,
 			strategy5 LONGTEXT NOT NULL,
-			strategy6 LONGTEXT NOT NULL
+			strategy6 LONGTEXT NOT NULL,
+			driveRank1 INT(11) NOT NULL,
+			driveRank2 INT(11) NOT NULL,
+			driveRank3 INT(11) NOT NULL,
+			driveRank4 INT(11) NOT NULL,
+			driveRank5 INT(11) NOT NULL,
+			driveRank6 INT(11) NOT NULL
 		)";
 		$statement = $conn->prepare($query);
 		if(!$statement->execute()){
@@ -328,7 +334,13 @@ include("databaseName.php");
 							$strategy3,
 							$strategy4,
 							$strategy5,
-							$strategy6){
+							$strategy6,
+							$driveRank1,
+							$driveRank2,
+							$driveRank3,
+							$driveRank4,
+							$driveRank5,
+							$driveRank6){
 		global $servername;
 		global $username;
 		global $password;
@@ -346,7 +358,14 @@ include("databaseName.php");
 															`strategy3`,
 															`strategy4`,
 															`strategy5`,
-															`strategy6`)
+															`strategy6`,
+
+															`driveRank1`,
+															`driveRank2`,
+															`driveRank3`,
+															`driveRank4`,
+															`driveRank5`,
+															`driveRank6`)
 															VALUES
 															("'.$matchNum.'",
 															"'.$team1.'",
@@ -360,7 +379,13 @@ include("databaseName.php");
 															"'.$strategy3.'",
 															"'.$strategy4.'",
 															"'.$strategy5.'",
-															"'.$strategy6.'")';
+															"'.$strategy6.'",
+															"'.$driveRank1.'",
+															"'.$driveRank2.'",
+															"'.$driveRank3.'",
+															"'.$driveRank4.'",
+															"'.$driveRank5.'",
+															"'.$driveRank6.'")';
 		error_log($queryString);
 		$queryOutput = runQuery($queryString);
 	}
@@ -409,7 +434,9 @@ include("databaseName.php");
 						array_push(	$teamData[9], array($row["matchNum"], $row["team1"], $row["team2"],
 									$row["team3"], $row["team4"], $row["team5"], $row["team6"],
 									$row["strategy1"], $row["strategy2"], $row["strategy3"],
-									$row["strategy4"], $row["strategy5"], $row["strategy6"]));
+									$row["strategy4"], $row["strategy5"], $row["strategy6"],
+									$row["driveRank1"],$row["driveRank2"],$row["driveRank3"],
+								$row["driveRank4"],$row["driveRank5"],$row["driveRank6"]));
 					}
 				}
 				//print_r($teamData);

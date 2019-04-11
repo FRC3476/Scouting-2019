@@ -18,7 +18,7 @@
        include("databaseLibrary.php");
        $result = getAllHeadScoutData();
         $i=0;
-       
+
        echo('<div style="border:1px solid black;overflow-y:hidden;overflow-x:scroll;"><table  class="sortable table table-hover" id="RawData" border="1">');
        foreach ($result as $row_key => $row){
                if($i==0){
@@ -29,9 +29,9 @@
                                }
                        }
                        $i++;
-                       echo("</tr>");                
+                       echo("</tr>");
                }
-               echo("<tr>");        
+               echo("<tr>");
                     foreach ($row as $key => $value){
                             if(!is_numeric($key)){
 								if($key == "matchNum"){
@@ -57,8 +57,8 @@
 									}
                                echo("<td align='center'>".$value."</td>");
                        }
-               }        
-               echo("</tr>");                
+               }
+               echo("</tr>");
             }
             echo("</table>");
 ?>

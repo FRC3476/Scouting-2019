@@ -23,6 +23,12 @@ include("header.php")?>
 		$strategy4 = filter($_POST['strategy4']);
 		$strategy5 = filter($_POST['strategy5']);
 		$strategy6 = filter($_POST['strategy6']);
+		$driveRank1 = filter($_POST['driveRank1']);
+		$driveRank2 = filter($_POST['driveRank2']);
+		$driveRank3 = filter($_POST['driveRank3']);
+		$driveRank4 = filter($_POST['driveRank4']);
+		$driveRank5 = filter($_POST['driveRank5']);
+		$driveRank6 = filter($_POST['driveRank6']);
 
 		headScoutInput($matchNum,
 						$team1,
@@ -36,7 +42,13 @@ include("header.php")?>
 						$strategy3,
 						$strategy4,
 						$strategy5,
-						$strategy6);
+						$strategy6,
+						$driveRank1,
+						$driveRank2,
+						$driveRank3,
+						$driveRank4,
+						$driveRank5,
+						$driveRank6);
 	}
 ?>
 <head></head>
@@ -61,7 +73,6 @@ include("header.php")?>
 
 <input id="strategy1"  type="text" placeholder="Strategy 1">
 
-
 <br/>
 <br>
 <br/>
@@ -71,8 +82,6 @@ include("header.php")?>
 <input id="team2"  type="text" placeholder="Team 2">
 
 <input id="strategy2"  type="text" placeholder="Strategy 2">
-
-
 
 <br/>
 <br/>
@@ -84,8 +93,6 @@ include("header.php")?>
 
 <input id="strategy3"  type="text" placeholder="Strategy 3">
 
-
-
 <br/>
 <br/>
 <br/>
@@ -95,7 +102,6 @@ include("header.php")?>
 <input id="team4"  type="text" placeholder="Team 4">
 
 <input id="strategy4"  type="text" placeholder="Strategy 4">
-
 
 <br/>
 <br/>
@@ -107,7 +113,6 @@ include("header.php")?>
 
 <input id="strategy5"  type="text" placeholder="Strategy 5">
 
-
 <br/>
 <br/>
 <br/>
@@ -117,9 +122,23 @@ include("header.php")?>
 <input id="team6" type="text" placeholder="Team 6">
 
 <input id="strategy6"type="text" placeholder="Strategy 6">
+
 </div>
 <br/>
+<br/>
 
+<input id="driveRank1"type="text" placeholder="Drive Ranking 1">
+<input id="driveRank4"type="text" placeholder="Drive Ranking 4">
+<br/>
+<br/>
+<br/>
+<input id="driveRank2"type="text" placeholder="Drive Ranking 2">
+<input id="driveRank5"type="text" placeholder="Drive Ranking 5">
+<br/>
+<br/>
+<br/>
+<input id="driveRank3"type="text" placeholder="Drive Ranking 3">
+<input id="driveRank6"type="text" placeholder="Drive Ranking 6">
 
 <input style="background-color: rgb(15,129,120); padding-left: 25px; padding-right: 25px; padding-top: 8px; padding-bottom: 8px; font-size: 15px; font-weight: medium; color: white; margin-left: 30px; border-radius: 5px; margin-top: 5px;" type="submit" name="submit" value="Submit data" onclick="postwith('');">
 
@@ -175,7 +194,7 @@ include("header.php")?>
   		display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
   	}
 
-	#strategy2{
+		#strategy2{
   		display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
   	}
 
@@ -195,6 +214,53 @@ include("header.php")?>
   		display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
   	}
 
+		#driveRank6{
+			display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
+		}
+
+		#driveRank5{
+			display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
+		}
+
+		#driveRank4{
+			display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
+		}
+
+		#driveRank3{
+			display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
+		}
+
+		#driveRank2{
+			display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
+		}
+
+		#driveRank1{
+			display: inline-block; border:none; border-bottom: solid; border-color: rgba(120,120,120,50); border-width: 2px; width: 30%; margin-left: 30px; font-size: 15px; outline: none; padding-bottom: 10px;
+		}
+
+		#driveRank1:hover{
+			border-color: orange;
+		}
+
+		#driveRank2:hover{
+			border-color: orange;
+		}
+
+		#driveRank3:hover{
+			border-color: orange;
+		}
+
+		#driveRank4:hover{
+			border-color: orange;
+		}
+
+		#driveRank5:hover{
+			border-color: orange;
+		}
+
+		#driveRank6:hover{
+			border-color: orange;
+		}
 
 
   	#team1:hover{
@@ -267,7 +333,14 @@ function postwith(to){
 		'strategy3',
 		'strategy4',
 		'strategy5',
-		'strategy6'
+		'strategy6',
+
+		'driveRank1',
+		'driveRank2',
+		'driveRank3',
+		'driveRank4',
+		'driveRank5',
+		'driveRank6'
 		];
 
 		var nums = [
@@ -283,7 +356,14 @@ function postwith(to){
 		document.getElementById('strategy3').value,
 		document.getElementById('strategy4').value,
 		document.getElementById('strategy5').value,
-		document.getElementById('strategy6').value
+		document.getElementById('strategy6').value,
+
+		document.getElementById('driveRank1').value,
+		document.getElementById('driveRank2').value,
+		document.getElementById('driveRank3').value,
+		document.getElementById('driveRank4').value,
+		document.getElementById('driveRank5').value,
+		document.getElementById('driveRank6').value,
 		];
 
 
