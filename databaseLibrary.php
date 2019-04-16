@@ -605,6 +605,36 @@ function getMaxRocketHatch($teamNumber){
 		}
 		return ($climbCount);
 	}
+
+	function getAvgDriveRank($teamNumber){
+		$result = getAllHeadScoutData();
+		$driveRankSum= 0;
+		$matchCount = 0;
+		foreach ($result as $row_key => $row){
+			foreach ($row as $key => $value){
+				$num = $key;
+				if($value==$teamNumber){
+					$matchCount++;
+					if($key=="team1"){
+					 	$driveRankSum+=$row['driveRank1'];
+					}
+
+					else if($key=="team2"){
+						$driveRankSum+=$row['driveRank2'];
+					}
+
+					else if($key=="team3"){
+						$driveRankSum+=$row['driveRank3'];
+					}
+
+
+				}
+			}
+		}
+		return $driveRankSum/$matchCount;
+	}
+
+
 	function getTotalClimbTwo($teamNumber){
 		$teamData = getTeamData($teamNumber);
 		$climbCount = 0;
@@ -769,4 +799,5 @@ function getMaxRocketHatch($teamNumber){
 		error_log($penalCount/$matchCount);
 		return($penalCount/$matchCount);
 	}
+
 ?>

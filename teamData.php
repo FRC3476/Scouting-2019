@@ -335,6 +335,11 @@ var $ = jQuery.noConflict();
 						<td><?php echo($teamData[12]); ?></td>
 					</tr>
 
+					<tr class="success">
+					 <td>Can Climb With Another Robot</td>
+					 <td><?php echo(getAvgDriveRank($teamNumber)); ?></td>
+				 </tr>
+
 
 					  <tr class="danger">
 							<td>Pit Comments</td>

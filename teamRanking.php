@@ -21,6 +21,7 @@ include("header.php")?>
 					<th>Second Level Climb</th>
 					<th>Third Level Climb</th>
 					<th>Times Playes Defense</th>
+					<th>Avg Drive Ranking</th>
 				</tr>
 			<?php
 				include("databaseLibrary.php");
@@ -41,6 +42,7 @@ include("header.php")?>
 						 $secondClimb = getTotalClimbTwo($TeamNumber);
 						 $thirdClimb = getTotalClimbThree($TeamNumber);
 						 $timesDefense = getTotalDefense($TeamNumber);
+						 $avgDriveRank = getAvgDriveRank($TeamNumber);
 
 
 					echo("<tr>
@@ -56,6 +58,7 @@ include("header.php")?>
 					<th>".$secondClimb."</th>
 					<th>".$thirdClimb."</th>
 					<th>".$timesDefense."</th>
+					<th>".$avgDriveRank."</th>
 
 					</tr>");
 				}
