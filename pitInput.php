@@ -12,6 +12,11 @@ function filter($str){
 	if(!isset($_POST['doubleClimb'])){
 		$_POST['doubleClimb']="off";
 	}
+
+
+	if(!isset($_POST['cheesecake'])){
+		$_POST['cheesecake']="off";
+	}
 	 include("databaseLibrary.php");
 	 $cameraStream = filter($_POST['cameraStream']);
 	 $teamNum = filter($_POST['teamNumber']);
@@ -25,6 +30,7 @@ function filter($str){
 	 $auto = filter($_POST['auto']);
 	 $driveSkills = filter($_POST['driveSkills']);
 	 $doubleClimb = filter($_POST['doubleClimb']);
+	 $cheesecake = filter($_POST['cheesecake']);
 
 	 pitScoutInput( $teamNum,
 				 $teamName,
@@ -37,7 +43,8 @@ function filter($str){
 				 $auto,
 				 $cameraStream,
 			 	 $driveSkills,
-			 	 $doubleClimb);
+			 	 $doubleClimb,
+			 	 $cheesecake);
 
  }
  ?>
@@ -142,6 +149,13 @@ function filter($str){
 
 				<div>
 				<b><br>Double Climb With Us: <label class="container2"><input type="checkbox" name="doubleClimb"><span class="checkmark"></span>
+				</label></b>
+				</div>
+				<br/>
+				<br/>
+
+				<div>
+				<b><br>Can Cheesecake: <label class="container2"><input type="checkbox" name="cheesecake"><span class="checkmark"></span>
 				</label></b>
 				</div>
 				<br/>

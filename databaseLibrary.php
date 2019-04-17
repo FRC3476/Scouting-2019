@@ -123,7 +123,8 @@ include("databaseName.php");
 			auto VARCHAR(20) NOT NULL,
 			cameraStream VARCHAR(4) NOT NULL,
 			driveSkills VARCHAR(20) NOT NULL,
-			doubleClimb VARCHAR(4) NOT NULL
+			doubleClimb VARCHAR(4) NOT NULL,
+			cheesecake VARCHAR(4) NOT NULL
 		)";
 		$statement = $conn->prepare($query);
 		if(!$statement->execute()){
@@ -194,10 +195,10 @@ include("databaseName.php");
 	}
 	//Input- pitScoutInput, Data from pit scout form is assigned to columns in 17template_pitscout.
 	//Output- queryString and "Success" statement, data put in columns.
-	function pitScoutInput($teamNum, $teamName, $weight, $height, $numBatteries,$chargedBatteries, $driveTrain, $pitComments, $auto, $cameraStream, $driveSkills, $doubleClimb){
+	function pitScoutInput($teamNum, $teamName, $weight, $height, $numBatteries,$chargedBatteries, $driveTrain, $pitComments, $auto, $cameraStream, $driveSkills, $doubleClimb, $cheesecake){
 		global $pitScoutTable;
-		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`, `driveSkills`, `doubleClimb`)";
-		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'", "'.$driveSkills.'", "'.$doubleClimb.'")';
+		$queryString = "REPLACE INTO `".$pitScoutTable."` (`teamNumber`, `teamName`, `weight`, `height`, `numBatteries`,`chargedBatteries`, `driveTrain`, `pitComments`, `auto`, `cameraStream`, `driveSkills`, `doubleClimb`, `cheesecake`)";
+		$queryString = $queryString.' VALUES ("'.$teamNum.'", "'.$teamName.'", "'.$weight.'", "'.$height.'", "'.$numBatteries.'", "'.$chargedBatteries.'", "'.$driveTrain.'", "'.$pitComments.'", "'.$auto.'", "'.$cameraStream.'", "'.$driveSkills.'", "'.$doubleClimb.'", "'.$cheesecake.'")';
 		$queryOutput = runQuery($queryString);
 	}
 	/*function pitScoutInput($matchNum,$teamNum,){
@@ -408,7 +409,7 @@ include("databaseName.php");
 		if($result != FALSE){
 			// output data of each row
 			foreach ($result as $row_key => $row){
-			array_push( $teamData, $row["teamName"], $row["weight"], $row["height"], $row["numBatteries"], $row["chargedBatteries"], $row["driveTrain"], $row["pitComments"], $row["auto"], array(), array(), $row["cameraStream"], $row["driveSkills"], $row["doubleClimb"]);
+			array_push( $teamData, $row["teamName"], $row["weight"], $row["height"], $row["numBatteries"], $row["chargedBatteries"], $row["driveTrain"], $row["pitComments"], $row["auto"], array(), array(), $row["cameraStream"], $row["driveSkills"], $row["doubleClimb"], $row["cheesecake"]);
 				$pitExists = True;
 			}
 		}

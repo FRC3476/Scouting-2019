@@ -294,6 +294,13 @@ var $ = jQuery.noConflict();
 							<td>Average Penalties</td>
 							<td><?php echo(getAvgPenalties($teamNumber));?></td>
 						</tr>
+
+						<tr class="success">
+						 <td>Avg Drive Ranking</td>
+						 <td><?php echo(getAvgDriveRank($teamNumber)); ?></td>
+					 </tr>
+
+					 
 					</tbody>
 					</table>
 
@@ -335,10 +342,10 @@ var $ = jQuery.noConflict();
 						<td><?php echo($teamData[12]); ?></td>
 					</tr>
 
-					<tr class="success">
-					 <td>Can Climb With Another Robot</td>
-					 <td><?php echo(getAvgDriveRank($teamNumber)); ?></td>
-				 </tr>
+				 <tr class="danger">
+					<td>Can Cheescake</td>
+					<td><?php echo($teamData[13]); ?></td>
+				</tr>
 
 
 					  <tr class="danger">
