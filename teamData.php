@@ -300,7 +300,7 @@ var $ = jQuery.noConflict();
 						 <td><?php echo(getAvgDriveRank($teamNumber)); ?></td>
 					 </tr>
 
-					 
+
 					</tbody>
 					</table>
 
@@ -338,7 +338,7 @@ var $ = jQuery.noConflict();
 					 </tr>
 
 					 <tr class="success">
-						<td>Can Climb With Another Robot</td>
+						<td>Can Climb With Us</td>
 						<td><?php echo($teamData[12]); ?></td>
 					</tr>
 
@@ -358,7 +358,7 @@ var $ = jQuery.noConflict();
 					  </tr>
 
 						<tr class="info">
-							<td>Auto</td>
+							<td>Sand Storm</td>
 							<td><?php echo($teamData[7]); ?></td>
 						</tr>
 					</tbody>
