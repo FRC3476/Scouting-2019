@@ -334,7 +334,7 @@ function postwith(to){
 					<h4><b><u>Comments / Strategy: </u></b></h4>
 					<textarea placeholder="Please write strategy of the robot or interesting observations of the robot" type="text" id="matchComments" class="form-control md-textarea" rows="6"></textarea>
 					<br>
-					<input type="button" value="Submit Data" id="submitButton" class="btn btn-primary" onclick="postwith(''); location.reload();" />
+					<input type="button" value="Submit Data" id="submitButton" class="btn btn-primary" onclick="postwith('')" />
 					</div>
 
 				</div>
