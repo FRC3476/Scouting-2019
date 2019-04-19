@@ -18,6 +18,7 @@ include('navBar.php');
         }
 
         .navbar .btn-group .dropdown-menu a:active {
+
             color: #fff !important;
         }
 
