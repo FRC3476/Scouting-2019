@@ -13,6 +13,10 @@ function postwith(to){
 		document.getElementById('penalties').value=0;
 	}
 
+	if(document.getElementById('matchNum').value=="" || document.getElementById('teamNum').value==""){
+		return;
+	}
+
 		var nums = {
 		'userName' : document.getElementById('userName').value,
 		'matchNum' : document.getElementById('matchNum').value,

@@ -4,48 +4,49 @@
 function filter($str){
 	return filter_var($str, FILTER_SANITIZE_STRING);
 }
- if( isset( $_POST['teamNumber'] ) ) {
-	if(!isset($_POST['cameraStream'])){
-		$_POST['cameraStream']="off";
-	}
+ if( isset( $_POST['teamNumber']) ) {
+		if($_POST['teamNumber']!=""){
+			if(!isset($_POST['cameraStream'])){
+				$_POST['cameraStream']="off";
+			}
 
-	if(!isset($_POST['doubleClimb'])){
-		$_POST['doubleClimb']="off";
-	}
+			if(!isset($_POST['doubleClimb'])){
+				$_POST['doubleClimb']="off";
+			}
 
 
-	if(!isset($_POST['cheesecake'])){
-		$_POST['cheesecake']="off";
-	}
-	 include("databaseLibrary.php");
-	 $cameraStream = filter($_POST['cameraStream']);
-	 $teamNum = filter($_POST['teamNumber']);
-	 $teamName = filter($_POST['teamName']);
-	 $weight = filter($_POST['weight']);
-	 $height = filter($_POST['height']);
-	 $numBatteries = filter($_POST['numBatteries']);
-	 $chargedBatteries = filter($_POST['chargedBatteries']);
-	 $driveTrain = filter($_POST['driveTrain']);
-	 $pitComments = filter($_POST['pitComments']);
-	 $auto = filter($_POST['auto']);
-	 $driveSkills = filter($_POST['driveSkills']);
-	 $doubleClimb = filter($_POST['doubleClimb']);
-	 $cheesecake = filter($_POST['cheesecake']);
+			if(!isset($_POST['cheesecake'])){
+				$_POST['cheesecake']="off";
+			}
+			 include("databaseLibrary.php");
+			 $cameraStream = filter($_POST['cameraStream']);
+			 $teamNum = filter($_POST['teamNumber']);
+			 $teamName = filter($_POST['teamName']);
+			 $weight = filter($_POST['weight']);
+			 $height = filter($_POST['height']);
+			 $numBatteries = filter($_POST['numBatteries']);
+			 $chargedBatteries = filter($_POST['chargedBatteries']);
+			 $driveTrain = filter($_POST['driveTrain']);
+			 $pitComments = filter($_POST['pitComments']);
+			 $auto = filter($_POST['auto']);
+			 $driveSkills = filter($_POST['driveSkills']);
+			 $doubleClimb = filter($_POST['doubleClimb']);
+			 $cheesecake = filter($_POST['cheesecake']);
 
-	 pitScoutInput( $teamNum,
-				 $teamName,
-				 $weight,
-				 $height,
-				 $numBatteries,
-				 $chargedBatteries,
-				 $driveTrain,
-				 $pitComments,
-				 $auto,
-				 $cameraStream,
-			 	 $driveSkills,
-			 	 $doubleClimb,
-			 	 $cheesecake);
-
+			 pitScoutInput( $teamNum,
+						 $teamName,
+						 $weight,
+						 $height,
+						 $numBatteries,
+						 $chargedBatteries,
+						 $driveTrain,
+						 $pitComments,
+						 $auto,
+						 $cameraStream,
+					 	 $driveSkills,
+					 	 $doubleClimb,
+					 	 $cheesecake);
+			}
  }
  ?>
 <head>
