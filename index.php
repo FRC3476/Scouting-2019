@@ -10,7 +10,7 @@ include('navBar.php');
             color: #fff;
         }
         .intro-1 {
-            background: url("images/perry.png")no-repeat center center;
+            background: url("images/nemo.png")no-repeat center center;
             background-size: cover;
         }
         .navbar .btn-group .dropdown-menu a:hover {
