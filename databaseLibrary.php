@@ -220,6 +220,90 @@ include("databaseName.php");
 		return($teams);
 	}
 
+	//Experimental scoreEstimate
+	function getScoreEstimate($team1, $team2, $team3){
+		$scoreEstimate = 0;
+		$Sum=0;
+		$teamList=[$team1,$team2,$team3];
+
+		for($i=0; $i<3; $i++){
+			$Sum+=3*getAvgCargo($teamList[$i]);
+			$Sum+=2*getAvgHatch($teamList[$i]);
+			$Sum+=3*getAvgCargoA($teamList[$i]);
+			$Sum+=2*getAvgHatchA($teamList[$i]);
+		}
+
+		$cachedClimb2=[0,0,0,0];
+		$cachedClimb3=[0,0];
+
+
+		for($i=0;$i<3;$i++){
+
+
+			if($cachedClimb3[1]!=1){
+				if(getAvgLevel3Climb($teamList[$i])>0){
+
+					$cachedClimb3=[$teamList[$i],1];
+					$Sum+=12;
+				}
+			}
+
+			if($cachedClimb2[1]!=1&&$cachedClimb2[0]!=$teamList[$i]){
+				if(getAvgLevel2Climb($teamList[$i])>0){
+					$cachedClimb2[0]=$teamList[$i];
+					$cachedClimb2[1]=1;
+					$Sum+=6;
+				}
+			}
+
+			if($cachedClimb2[1]==1&&$cachedClimb2[0]!=$teamList[$i]&&$cachedClimb3[0]!=$teamList[$i]){
+				if(getAvgLevel2Climb($teamList[$i])>0){
+					$cachedClimb2[3]=$teamList[$i];
+					$cachedClimb2[4]=1;
+					$Sum+=6;
+				}
+
+			}
+
+				if($cachedClimb2[0]!=$teamList[$i]&&$cachedClimb2[3]!=$teamList[$i]&&$cachedClimb3[0]!=$teamList[$i]){
+					$Sum+=3;
+			}
+
+		}
+
+		$scoreEstimate=$Sum;
+		return($scoreEstimate);
+	}
+
+
+	function getAvgLevel3Climb($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$climbSum=0;
+		$matchCount=0;
+
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			 $climbSum += $teamData[8][$i][25];
+			 $matchCount++;
+		}
+
+		return $climbSum/$matchCount;
+
+	}
+
+	function getAvgLevel2Climb($teamNumber){
+		$teamData = getTeamData($teamNumber);
+		$climbSum=0;
+		$matchCount=0;
+
+		for($i = 0; $i != sizeof($teamData[8]); $i++){
+			 $climbSum += $teamData[8][$i][24];
+			 $matchCount++;
+		}
+
+		return $climbSum/$matchCount;
+
+	}
+
 
 	//Input- pitScoutInput, Data from pit scout form is assigned to columns in 17template_matchinput.
 	//Output- queryString and "Success" statement, data put in columns.
